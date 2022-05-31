@@ -13,7 +13,9 @@ function AccountUser() {
 
   async function getData() {
     try {
-      const result = await axios.get("http://localhost:8000/account/");
+      const result = await axios.get(
+        "https://sliit-project-management.netlify.app/account/"
+      );
       if (result.data.dob) {
         const dobEdited = new Date(result.data.dob)
           .toISOString()
@@ -29,8 +31,10 @@ function AccountUser() {
   async function deleteUser() {
     try {
       console.log("delete user");
-      const result = await axios.delete("http://localhost:8000/account/delete");
-      
+      const result = await axios.delete(
+        "https://sliit-project-management.netlify.app/account/delete"
+      );
+
       navigate("/");
     } catch (err) {
       console.log(err);

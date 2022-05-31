@@ -5,7 +5,7 @@ import Chat from "./chat.components";
 import axios from "axios";
 import { Table } from "react-bootstrap";
 
-const socket = io.connect("http://localhost:8000");
+const socket = io.connect("https://sliit-project-management.netlify.app");
 
 function ChatHandler() {
   const [username, setUsername] = useState("");
@@ -21,8 +21,12 @@ function ChatHandler() {
 
   async function getData() {
     try {
-      const result = await axios.get("http://localhost:8000/account/");
-      const group = await axios.get("http://localhost:8000/chat/find-group");
+      const result = await axios.get(
+        "https://sliit-project-management.netlify.app/account/"
+      );
+      const group = await axios.get(
+        "https://sliit-project-management.netlify.app/chat/find-group"
+      );
 
       setUsername(result.data.name);
       setRoom(group.data.gid);

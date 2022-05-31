@@ -17,7 +17,10 @@ function Login() {
         password,
       };
 
-      await axios.post("http://localhost:8000/auth/login", loginData);
+      await axios.post(
+        "https://sliit-project-management.netlify.app/auth/login",
+        loginData
+      );
       await getLoggedIn();
       //navigate("/home");
     } catch (err) {

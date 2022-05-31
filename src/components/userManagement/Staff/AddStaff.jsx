@@ -5,14 +5,15 @@ import AuthContext from "../../context/LoginContext";
 import BlockRegister from "../blocks/registerBlock.components";
 
 function AddStaff() {
-
   const navigate = useNavigate();
   const { getLoggedIn } = useContext(AuthContext);
 
   async function register(registerData) {
     try {
-
-      await axios.post("http://localhost:8000/staff/register", registerData);
+      await axios.post(
+        "https://sliit-project-management.netlify.app/staff/register",
+        registerData
+      );
       alert("Verification Email Sent successfully");
       await getLoggedIn();
       navigate("/staffs");

@@ -20,7 +20,7 @@ function ChangePassword() {
       };
 
       await axios.put(
-        "http://localhost:8000/account/changepassword",
+        "https://sliit-project-management.netlify.app/account/changepassword",
         updatedData
       );
       alert("Changed Password Successfully");

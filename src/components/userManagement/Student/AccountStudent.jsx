@@ -18,7 +18,7 @@ function AccountStudent() {
         id: state._id,
       };
       await axios.delete(
-        "http://localhost:8000/student/delete",
+        "https://sliit-project-management.netlify.app/student/delete",
         {
           data,
         }

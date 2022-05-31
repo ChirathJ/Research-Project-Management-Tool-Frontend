@@ -18,9 +18,12 @@ function AccountAdmin() {
         id: state._id,
       };
 
-      await axios.delete("http://localhost:8000/admin/delete", {
-        data,
-      });
+      await axios.delete(
+        "https://sliit-project-management.netlify.app/admin/delete",
+        {
+          data,
+        }
+      );
       navigate("/staffs");
     } catch (err) {
       console.log(err);

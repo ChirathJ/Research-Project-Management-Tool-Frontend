@@ -12,7 +12,10 @@ function UpdateUser() {
 
   async function edit(editedData) {
     try {
-      await axios.put("http://localhost:8000/account/update", editedData);
+      await axios.put(
+        "https://sliit-project-management.netlify.app/account/update",
+        editedData
+      );
       alert("Updated Successfully");
 
       navigate("/account");

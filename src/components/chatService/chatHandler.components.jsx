@@ -5,7 +5,7 @@ import Chat from "./chat.components";
 import axios from "axios";
 import { Table } from "react-bootstrap";
 
-const socket = io.connect("https://sliit-project-management.netlify.app");
+const socket = io.connect("https://sliit-research-management.herokuapp.com");
 
 function ChatHandler() {
   const [username, setUsername] = useState("");
@@ -22,10 +22,10 @@ function ChatHandler() {
   async function getData() {
     try {
       const result = await axios.get(
-        "https://sliit-project-management.netlify.app/account/"
+        "https://sliit-research-management.herokuapp.com/account/"
       );
       const group = await axios.get(
-        "https://sliit-project-management.netlify.app/chat/find-group"
+        "https://sliit-research-management.herokuapp.com/chat/find-group"
       );
 
       setUsername(result.data.name);

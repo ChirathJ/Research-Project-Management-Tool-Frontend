@@ -11,7 +11,7 @@ function AllAdmin() {
   async function getData() {
     try {
       const result = await axios.get(
-        "https://sliit-project-management.netlify.app/admin/"
+        "https://sliit-research-management.herokuapp.com/admin/"
       );
 
       setAdminData(result.data);

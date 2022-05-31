@@ -28431,7 +28431,7 @@ function AuthContextProvider(props) {
    * '/login/loggedin' and sets the state of the loggedIn variable to the response data.
    */ async function getLoggedIn() {
         try {
-            const loggedInRes = await _axiosDefault.default.get("https://sliit-project-management.netlify.app/auth/loggedin", {
+            const loggedInRes = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/auth/loggedin", {
                 withCredentials: true
             });
             setLoggedIn(loggedInRes.data);
@@ -31050,7 +31050,7 @@ function LogOut() {
     const navigate = _reactRouterDom.useNavigate();
     async function logOut() {
         try {
-            await _axiosDefault.default.get("https://sliit-project-management.netlify.app/auth/logout");
+            await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/auth/logout");
             navigate("/");
         } catch (err) {
             console.error(err);
@@ -44418,7 +44418,7 @@ function Login() {
                 email,
                 password
             };
-            await _axiosDefault.default.post("https://sliit-project-management.netlify.app/auth/login", loginData);
+            await _axiosDefault.default.post("https://sliit-research-management.herokuapp.com/auth/login", loginData);
             await getLoggedIn();
         //navigate("/home");
         } catch (err) {
@@ -45184,7 +45184,7 @@ function Verify() {
     const navigate = _reactRouterDom.useNavigate();
     async function verifyUrl() {
         try {
-            const url = `https://sliit-project-management.netlify.app/auth/verify/${param.id}/${param.token}`;
+            const url = `https://sliit-research-management.herokuapp.com/auth/verify/${param.id}/${param.token}`;
             await _axiosDefault.default.get(url);
             setIsVerify(true);
             console.log("Verified");
@@ -45271,7 +45271,7 @@ function AccountUser() {
     const navigate = _reactRouterDom.useNavigate();
     async function getData() {
         try {
-            const result = await _axiosDefault.default.get("https://sliit-project-management.netlify.app/account/");
+            const result = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/account/");
             if (result.data.dob) {
                 const dobEdited = new Date(result.data.dob).toISOString().substring(0, 10);
                 result.data.dobEdited = dobEdited;
@@ -45284,7 +45284,7 @@ function AccountUser() {
     async function deleteUser() {
         try {
             console.log("delete user");
-            const result = await _axiosDefault.default.delete("https://sliit-project-management.netlify.app/account/delete");
+            const result = await _axiosDefault.default.delete("https://sliit-research-management.herokuapp.com/account/delete");
             navigate("/");
         } catch (err) {
             console.log(err);
@@ -45923,7 +45923,7 @@ function UpdateUser() {
     const { loggedIn  } = _react.useContext(_loginContextDefault.default);
     async function edit(editedData) {
         try {
-            await _axiosDefault.default.put("https://sliit-project-management.netlify.app/account/update", editedData);
+            await _axiosDefault.default.put("https://sliit-research-management.herokuapp.com/account/update", editedData);
             alert("Updated Successfully");
             navigate("/account");
         } catch (err) {
@@ -46471,7 +46471,7 @@ function AllStudents() {
     const navigate = _reactRouterDom.useNavigate();
     async function getData() {
         try {
-            const result = await _axiosDefault.default.get("https://sliit-project-management.netlify.app/student/");
+            const result = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/student/");
             setStudentsData(result.data);
         } catch (err) {
             console.log(err);
@@ -46778,7 +46778,7 @@ function AllStaff() {
     const navigate = _reactRouterDom.useNavigate();
     async function getData() {
         try {
-            const result = await _axiosDefault.default.get("https://sliit-project-management.netlify.app/staff/");
+            const result = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/staff/");
             setStaffData(result.data);
         } catch (err) {
             console.log(err);
@@ -46845,7 +46845,7 @@ function AddStaff() {
     const { getLoggedIn  } = _react.useContext(_loginContextDefault.default);
     async function register(registerData) {
         try {
-            await _axiosDefault.default.post("https://sliit-project-management.netlify.app/staff/register", registerData);
+            await _axiosDefault.default.post("https://sliit-research-management.herokuapp.com/staff/register", registerData);
             alert("Verification Email Sent successfully");
             await getLoggedIn();
             navigate("/staffs");
@@ -46898,7 +46898,7 @@ function UpdateStaff() {
     const navigate = _reactRouterDom.useNavigate();
     async function edit(editedData) {
         try {
-            await _axiosDefault.default.put("https://sliit-project-management.netlify.app/staff/update", editedData);
+            await _axiosDefault.default.put("https://sliit-research-management.herokuapp.com/staff/update", editedData);
             alert("Updated Successfully");
             navigate("/staffs");
         } catch (err) {
@@ -46959,7 +46959,7 @@ function AccountStaff() {
             const data = {
                 id: state._id
             };
-            await _axiosDefault.default.delete("https://sliit-project-management.netlify.app/staff/delete", {
+            await _axiosDefault.default.delete("https://sliit-research-management.herokuapp.com/staff/delete", {
                 data
             });
             navigate("/staffs");
@@ -47021,7 +47021,7 @@ function UpdateStudent() {
     const navigate = _reactRouterDom.useNavigate();
     async function edit(editedData) {
         try {
-            await _axiosDefault.default.put("https://sliit-project-management.netlify.app/student/update", editedData);
+            await _axiosDefault.default.put("https://sliit-research-management.herokuapp.com/student/update", editedData);
             alert("Updated Successfully");
             navigate("/students");
         } catch (err) {
@@ -47082,7 +47082,7 @@ function AccountStudent() {
             const data = {
                 id: state._id
             };
-            await _axiosDefault.default.delete("https://sliit-project-management.netlify.app/student/delete", {
+            await _axiosDefault.default.delete("https://sliit-research-management.herokuapp.com/student/delete", {
                 data
             });
             navigate("/students");
@@ -47150,7 +47150,7 @@ function ChangePassword() {
                 newPassword,
                 newPasswordVerify
             };
-            await _axiosDefault.default.put("https://sliit-project-management.netlify.app/account/changepassword", updatedData);
+            await _axiosDefault.default.put("https://sliit-research-management.herokuapp.com/account/changepassword", updatedData);
             alert("Changed Password Successfully");
             navigate("/");
         } catch (err) {
@@ -47317,7 +47317,7 @@ function AllAdmin() {
     const navigate = _reactRouterDom.useNavigate();
     async function getData() {
         try {
-            const result = await _axiosDefault.default.get("https://sliit-project-management.netlify.app/admin/");
+            const result = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/admin/");
             setAdminData(result.data);
         } catch (err) {
             console.log(err);
@@ -47388,7 +47388,7 @@ function AccountAdmin() {
             const data = {
                 id: state._id
             };
-            await _axiosDefault.default.delete("https://sliit-project-management.netlify.app/admin/delete", {
+            await _axiosDefault.default.delete("https://sliit-research-management.herokuapp.com/admin/delete", {
                 data
             });
             navigate("/staffs");
@@ -47450,7 +47450,7 @@ function UpdateAdmin() {
     const navigate = _reactRouterDom.useNavigate();
     async function edit(editedData) {
         try {
-            await _axiosDefault.default.put("https://sliit-project-management.netlify.app/admin/update", editedData);
+            await _axiosDefault.default.put("https://sliit-research-management.herokuapp.com/admin/update", editedData);
             alert("Updated Successfully");
             navigate("/admins");
         } catch (err) {
@@ -47507,7 +47507,7 @@ function AddAdmin() {
     const { getLoggedIn  } = _react.useContext(_loginContextDefault.default);
     async function register(registerData) {
         try {
-            await _axiosDefault.default.post("https://sliit-project-management.netlify.app/admin/register", registerData);
+            await _axiosDefault.default.post("https://sliit-research-management.herokuapp.com/admin/register", registerData);
             alert("Verification Email Sent successfully");
             await getLoggedIn();
             navigate("/admins");
@@ -47558,7 +47558,7 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactBootstrap = require("react-bootstrap");
 var _s = $RefreshSig$();
-const socket = _socketIoClientDefault.default.connect("https://sliit-project-management.netlify.app");
+const socket = _socketIoClientDefault.default.connect("https://sliit-research-management.herokuapp.com");
 function ChatHandler() {
     _s();
     const [username, setUsername] = _react.useState("");
@@ -47572,8 +47572,8 @@ function ChatHandler() {
     };
     async function getData() {
         try {
-            const result = await _axiosDefault.default.get("https://sliit-project-management.netlify.app/account/");
-            const group = await _axiosDefault.default.get("https://sliit-project-management.netlify.app/chat/find-group");
+            const result = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/account/");
+            const group = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/chat/find-group");
             setUsername(result.data.name);
             setRoom(group.data.gid);
         } catch (err) {

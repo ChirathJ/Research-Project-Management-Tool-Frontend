@@ -11,7 +11,7 @@ function AddStaff() {
   async function register(registerData) {
     try {
       await axios.post(
-        "https://sliit-project-management.netlify.app/staff/register",
+        "https://sliit-research-management.herokuapp.com/staff/register",
         registerData
       );
       alert("Verification Email Sent successfully");

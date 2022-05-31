@@ -20,7 +20,7 @@ function ChangePassword() {
       };
 
       await axios.put(
-        "https://sliit-project-management.netlify.app/account/changepassword",
+        "https://sliit-research-management.herokuapp.com/account/changepassword",
         updatedData
       );
       alert("Changed Password Successfully");

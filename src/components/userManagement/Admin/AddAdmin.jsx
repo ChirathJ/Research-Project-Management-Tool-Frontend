@@ -11,7 +11,7 @@ function AddAdmin() {
   async function register(registerData) {
     try {
       await axios.post(
-        "https://sliit-project-management.netlify.app/admin/register",
+        "https://sliit-research-management.herokuapp.com/admin/register",
         registerData
       );
       alert("Verification Email Sent successfully");

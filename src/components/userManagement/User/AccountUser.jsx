@@ -14,7 +14,7 @@ function AccountUser() {
   async function getData() {
     try {
       const result = await axios.get(
-        "https://sliit-project-management.netlify.app/account/"
+        "https://sliit-research-management.herokuapp.com/account/"
       );
       if (result.data.dob) {
         const dobEdited = new Date(result.data.dob)
@@ -32,7 +32,7 @@ function AccountUser() {
     try {
       console.log("delete user");
       const result = await axios.delete(
-        "https://sliit-project-management.netlify.app/account/delete"
+        "https://sliit-research-management.herokuapp.com/account/delete"
       );
 
       navigate("/");

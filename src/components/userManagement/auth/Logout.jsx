@@ -7,7 +7,7 @@ function LogOut() {
   async function logOut() {
     try {
       await axios.get(
-        "https://sliit-project-management.netlify.app/auth/logout"
+        "https://sliit-research-management.herokuapp.com/auth/logout"
       );
 
       navigate("/");

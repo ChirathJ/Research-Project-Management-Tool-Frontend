@@ -19,7 +19,7 @@ function AccountAdmin() {
       };
 
       await axios.delete(
-        "https://sliit-project-management.netlify.app/admin/delete",
+        "https://sliit-research-management.herokuapp.com/admin/delete",
         {
           data,
         }

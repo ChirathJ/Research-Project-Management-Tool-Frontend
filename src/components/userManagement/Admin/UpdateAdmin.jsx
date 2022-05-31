@@ -10,7 +10,7 @@ function UpdateAdmin() {
   async function edit(editedData) {
     try {
       await axios.put(
-        "https://sliit-project-management.netlify.app/admin/update",
+        "https://sliit-research-management.herokuapp.com/admin/update",
         editedData
       );
       alert("Updated Successfully");

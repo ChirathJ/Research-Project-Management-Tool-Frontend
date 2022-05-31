@@ -11,7 +11,7 @@ function AllStaff() {
   async function getData() {
     try {
       const result = await axios.get(
-        "https://sliit-project-management.netlify.app/staff/"
+        "https://sliit-research-management.herokuapp.com/staff/"
       );
 
       setStaffData(result.data);

@@ -10,7 +10,7 @@ function Verify() {
 
   async function verifyUrl() {
     try {
-      const url = `https://sliit-project-management.netlify.app/auth/verify/${param.id}/${param.token}`;
+      const url = `https://sliit-research-management.herokuapp.com/auth/verify/${param.id}/${param.token}`;
       await axios.get(url);
 
       setIsVerify(true);

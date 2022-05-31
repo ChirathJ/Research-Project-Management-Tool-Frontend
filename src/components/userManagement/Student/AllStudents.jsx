@@ -11,7 +11,7 @@ function AllStudents() {
   async function getData() {
     try {
       const result = await axios.get(
-        "https://sliit-project-management.netlify.app/student/"
+        "https://sliit-research-management.herokuapp.com/student/"
       );
 
       setStudentsData(result.data);

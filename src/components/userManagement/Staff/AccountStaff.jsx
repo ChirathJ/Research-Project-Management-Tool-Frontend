@@ -19,7 +19,7 @@ function AccountStaff() {
       };
 
       await axios.delete(
-        "https://sliit-project-management.netlify.app/staff/delete",
+        "https://sliit-research-management.herokuapp.com/staff/delete",
         {
           data,
         }

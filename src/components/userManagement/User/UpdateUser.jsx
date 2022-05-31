@@ -13,7 +13,7 @@ function UpdateUser() {
   async function edit(editedData) {
     try {
       await axios.put(
-        "https://sliit-project-management.netlify.app/account/update",
+        "https://sliit-research-management.herokuapp.com/account/update",
         editedData
       );
       alert("Updated Successfully");

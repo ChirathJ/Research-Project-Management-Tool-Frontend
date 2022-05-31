@@ -18,7 +18,7 @@ function Login() {
       };
 
       await axios.post(
-        "https://sliit-project-management.netlify.app/auth/login",
+        "https://sliit-research-management.herokuapp.com/auth/login",
         loginData
       );
       await getLoggedIn();

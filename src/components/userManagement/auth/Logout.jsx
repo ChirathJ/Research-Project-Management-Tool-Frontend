@@ -6,7 +6,9 @@ function LogOut() {
 
   async function logOut() {
     try {
-      await axios.get("http:///localhost:8000/auth/logout");
+      await axios.get(
+        "https://sliit-project-management.netlify.app/auth/logout"
+      );
 
       navigate("/");
     } catch (err) {

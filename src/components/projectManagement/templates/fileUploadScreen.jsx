@@ -28,10 +28,7 @@ function FileUploadScreen() {
         formData.append("fileTopic", title);
         formData.append("fileMessage", message);
         await axios
-          .post(
-            "https://sliit-research-management.herokuapp.com/api/singleFile",
-            formData
-          )
+          .post("http://localhost:8000/api/singleFile", formData)
           .then((res) => {
             alert(res.data);
             navigate("/templates/show");
@@ -57,10 +54,7 @@ function FileUploadScreen() {
           formData.append("files", multipleFile[i]);
         }
         await axios
-          .post(
-            "https://sliit-research-management.herokuapp.com/api/multipleFiles",
-            formData
-          )
+          .post("http://localhost:8000/api/multipleFiles", formData)
           .then((res) => {
             {
               alert(res.data);

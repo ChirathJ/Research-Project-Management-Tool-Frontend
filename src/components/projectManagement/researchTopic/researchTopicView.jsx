@@ -9,15 +9,11 @@ function ResearchTopicView() {
   useEffect(() => {
     async function getAllData() {
       try {
-        await axios
-          .get(
-            "https://sliit-research-management.herokuapp.com/research-topic/"
-          )
-          .then((res) => {
-            if (res.status === 200) {
-              setDetails(res.data.details);
-            }
-          });
+        await axios.get("http://localhost:8000/research-topic/").then((res) => {
+          if (res.status === 200) {
+            setDetails(res.data.details);           
+          }
+        });
       } catch (error) {
         console.error(error);
         alert(error);
@@ -26,11 +22,11 @@ function ResearchTopicView() {
     getAllData();
   }, []);
 
-  function editResearchTopicStatus(details) {
+  function editResearchTopicStatus(details){
     navigate("/researchTopic/edit", { state: details });
   }
 
-  dataList = details.map((item, index) => {
+  dataList = details.map((item, index) => {  
     return (
       <tr key={index}>
         <td>{item.groupId.gid}</td>
@@ -38,13 +34,8 @@ function ResearchTopicView() {
         <td>{item.status}</td>
         <td>{item.feedBack}</td>
         <td>
-          <button
-            className="btn btn-success"
-            onClick={editResearchTopicStatus.bind(this, item)}
-          >
-            Edit
-          </button>
-        </td>
+          <button className="btn btn-success" onClick={editResearchTopicStatus.bind(this,item)}>Edit</button>
+        </td>        
       </tr>
     );
   });

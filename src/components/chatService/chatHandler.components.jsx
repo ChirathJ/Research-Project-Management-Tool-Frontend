@@ -6,7 +6,7 @@ import axios from "axios";
 import { Table } from "react-bootstrap";
 import AuthContext from "../userManagement/context/LoginContext";
 
-const socket = io.connect("https://sliit-research-management.herokuapp.com");
+const socket = io.connect("http://localhost:8000");
 
 function ChatHandler() {
   const { loggedIn } = useContext(AuthContext);
@@ -16,6 +16,11 @@ function ChatHandler() {
   const [group, setGroup] = useState([]);
   const [showChat, setShowChat] = useState(false);
 
+  /**
+   * When the user clicks on a button, the function will set the room state to the value of the button's
+   * id, and if the username and room states are not empty, it will emit a join_room event to the server,
+   * and set the showChat state to true.
+   */
   const joinRoom = (gid) => {
     setRoom(gid);
     if (username !== "" && room !== "") {
@@ -24,20 +29,17 @@ function ChatHandler() {
     }
   };
 
+  /**
+   * It gets the username and group from the database and sets the state of the username and group.
+   */
   async function getData() {
     try {
-      const result = await axios.get(
-        "https://sliit-research-management.herokuapp.com/account/"
-      );
+      const result = await axios.get("http://localhost:8000/account/");
       if (loggedIn === "Student") {
-        const group = await axios.get(
-          "https://sliit-research-management.herokuapp.com/chat/find-group"
-        );
+        const group = await axios.get("http://localhost:8000/chat/find-group");
         setGroup(group.data.allgroups);
       } else {
-        const group = await axios.get(
-          "https://sliit-research-management.herokuapp.com/groups/"
-        );
+        const group = await axios.get("http://localhost:8000/groups/");
         setGroup(group.data.allgroups);
       }
       setUsername(result.data.name);
@@ -47,6 +49,10 @@ function ChatHandler() {
     }
   }
 
+  /**
+   * It returns a table row for each group in the group array.
+   * @returns A list of table rows.
+   */
   function groupList() {
     return group.map((current, index) => {
       return (
@@ -66,6 +72,7 @@ function ChatHandler() {
     });
   }
 
+  /* Calling the getData function when the component is mounted. */
   useEffect(() => {
     getData();
   }, []);
@@ -92,6 +99,7 @@ function ChatHandler() {
           </div>
         </div>
       ) : (
+        /* Rendering the Chat component. */
         <Chat socket={socket} username={username} room={room} />
       )}
     </div>

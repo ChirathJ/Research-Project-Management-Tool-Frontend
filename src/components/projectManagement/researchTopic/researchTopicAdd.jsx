@@ -12,25 +12,18 @@ function ResearchTopicAdd() {
   useEffect(() => {
     try {
       async function getData() {
-        await axios
-          .get(
-            "https://sliit-research-management.herokuapp.com/chat/find-group"
-          )
-          .then((res) => {
-            setGroup(res.data);
-            setGroupId(res.data.gid);
-            axios
-              .get(
-                `https://sliit-research-management.herokuapp.com/research-topic/details/${res.data._id}`
-              )
-              .then((res) => {
-                setDetails(res.data);
-                console.log(res.data);
-                setResearchTopic(res.data.researchTopic);
-                setStatus(res.data.status);
-                setFeedBack(res.data.feedBack);
-              });
-          });
+        await axios.get("http://localhost:8000/chat/find-group").then((res) => {
+          setGroup(res.data);
+          setGroupId(res.data.gid);
+          axios
+            .get(`http://localhost:8000/research-topic/details/${res.data._id}`)
+            .then((res) => {
+              setDetails(res.data);              
+              setResearchTopic(res.data.researchTopic);
+              setStatus(res.data.status);
+              setFeedBack(res.data.feedBack);
+            });
+        });
       }
       getData();
     } catch (error) {}
@@ -45,10 +38,7 @@ function ResearchTopicAdd() {
           feedBack: feedBack,
         };
         await axios
-          .put(
-            `https://sliit-research-management.herokuapp.com/research-topic/update/${details._id}`,
-            data
-          )
+          .put(`http://localhost:8000/research-topic/update/${details._id}`, data)
           .then((res) => {
             if (res.status === 200) {
               alert(res.data);
@@ -67,18 +57,19 @@ function ResearchTopicAdd() {
           feedBack: feedBack,
         };
         await axios
-          .post(
-            "https://sliit-research-management.herokuapp.com/research-topic/save",
-            data
-          )
+          .post("http://localhost:8000/research-topic/save", data)
           .then((res) => {
             if (res.status === 200) {
               alert(res.data);
               window.location.reload();
             }
+            else{
+              alert(res.data);
+            }          
+            
           });
       } catch (error) {
-        console.error(error);
+        console.log(error);
         alert(error.response.data);
       }
     }

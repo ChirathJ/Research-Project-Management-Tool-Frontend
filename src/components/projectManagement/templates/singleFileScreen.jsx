@@ -11,9 +11,7 @@ function SingleFileScreen() {
     async function getSingleFileData() {
       try {
         await axios
-          .get(
-            "https://sliit-research-management.herokuapp.com/api/getAllSingleFiles/"
-          )
+          .get("http://localhost:8000/api/getAllSingleFiles/")
           .then((res) => {
             if (res.status === 200) {
               setDataList(res.data);
@@ -33,9 +31,7 @@ function SingleFileScreen() {
     try {
       if (window.confirm("This File Will Be Deleted!")) {
         await axios
-          .delete(
-            `https://sliit-research-management.herokuapp.com/api/singleFile/delete/${details._id}`
-          )
+          .delete(`http://localhost:8000/api/singleFile/delete/${details._id}`)
           .then((res) => {
             console.log(res);
             if (res.status === 200) {
@@ -66,7 +62,7 @@ function SingleFileScreen() {
             <td>{item.fileTopic}</td>
             <td>
               <a
-                href={`https://sliit-research-management.herokuapp.com/${item.filePath}`}
+                href={`http://localhost:8000/${item.filePath}`}
                 download={``}
                 style={{ textDecoration: "none" }}
               >
@@ -91,7 +87,7 @@ function SingleFileScreen() {
             <td>{item.fileTopic}</td>
             <td>
               <a
-                href={`https://sliit-research-management.herokuapp.com/${item.filePath}`}
+                href={`http://localhost:8000/${item.filePath}`}
                 download={``}
                 style={{ textDecoration: "none" }}
               >

@@ -20,7 +20,7 @@ function ChangePassword() {
       };
 
       await axios.put(
-        "http://localhost:8000/account/changepassword",
+        "https://sliit-research-management.herokuapp.com/account/changepassword",
         updatedData
       );
       alert("Changed Password Successfully");

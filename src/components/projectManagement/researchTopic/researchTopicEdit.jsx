@@ -12,9 +12,11 @@ function ResearchTopicEdit() {
 
   useEffect(() => {
     async function getData() {
-      await axios.get("http://localhost:8000/chat/find-group").then((res) => {     
-        setGroupId(res.data.gid);
-      });
+      await axios
+        .get("https://sliit-research-management.herokuapp.com/chat/find-group")
+        .then((res) => {
+          setGroupId(res.data.gid);
+        });
     }
     getData();
   }, []);
@@ -25,17 +27,20 @@ function ResearchTopicEdit() {
         researchTopic: researchTopic,
         status: status,
         feedBack: feedBack,
-      };    
+      };
       await axios
-        .put(`http://localhost:8000/research-topic/update/${state._id}`, data)
-        .then((res) => {       
-          if (res.status === 200) {         
+        .put(
+          `https://sliit-research-management.herokuapp.com/research-topic/update/${state._id}`,
+          data
+        )
+        .then((res) => {
+          if (res.status === 200) {
             alert(res.data);
-            navigate("/researchTopic/view")
+            navigate("/researchTopic/view");
           }
         });
     } catch (error) {
-        console.error(error)
+      console.error(error);
     }
   };
 

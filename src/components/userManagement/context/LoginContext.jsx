@@ -17,7 +17,7 @@ function AuthContextProvider(props) {
   async function getLoggedIn() {
     try {
       const loggedInRes = await axios.get(
-        "http://localhost:8000/auth/loggedin",
+        "https://sliit-research-management.herokuapp.com/auth/loggedin",
         {
           withCredentials: true,
         }

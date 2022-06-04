@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import BlockRegister from "../Blocks/registerBlock.components";
 
 function Register() {
-
   const navigate = useNavigate();
 
   async function register(registerData) {
     try {
-      await axios.post("http://localhost:8000/student/register", registerData);
+      await axios.post(
+        "https://sliit-research-management.herokuapp.com/student/register",
+        registerData
+      );
       alert("Verification Email Sent successfully");
       //await getLoggedIn();
       navigate("/");

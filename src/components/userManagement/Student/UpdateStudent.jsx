@@ -9,7 +9,10 @@ function UpdateStudent() {
 
   async function edit(editedData) {
     try {
-      await axios.put("http://localhost:8000/student/update", editedData);
+      await axios.put(
+        "https://sliit-research-management.herokuapp.com/student/update",
+        editedData
+      );
       alert("Updated Successfully");
 
       navigate("/students");

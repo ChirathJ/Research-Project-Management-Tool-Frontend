@@ -13,7 +13,9 @@ function AccountUser() {
 
   async function getData() {
     try {
-      const result = await axios.get("http://localhost:8000/account/");
+      const result = await axios.get(
+        "https://sliit-research-management.herokuapp.com/account/"
+      );
       if (result.data.dob) {
         const dobEdited = new Date(result.data.dob)
           .toISOString()
@@ -33,8 +35,10 @@ function AccountUser() {
       }
 
       console.log("delete user");
-      await axios.delete("http://localhost:8000/account/delete");
-      
+      await axios.delete(
+        "https://sliit-research-management.herokuapp.com/account/delete"
+      );
+
       navigate("/");
     } catch (err) {
       console.log(err);

@@ -5,13 +5,15 @@ import AuthContext from "../context/LoginContext";
 import BlockRegister from "../Blocks/registerBlock.components";
 
 function AddAdmin() {
-
   const navigate = useNavigate();
   const { getLoggedIn } = useContext(AuthContext);
 
   async function register(registerData) {
     try {
-      await axios.post("http://localhost:8000/admin/register", registerData);
+      await axios.post(
+        "https://sliit-research-management.herokuapp.com/admin/register",
+        registerData
+      );
       alert("Verification Email Sent successfully");
       await getLoggedIn();
       navigate("/admins");

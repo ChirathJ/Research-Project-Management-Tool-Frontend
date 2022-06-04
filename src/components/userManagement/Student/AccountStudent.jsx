@@ -21,7 +21,7 @@ function AccountStudent() {
         id: state._id,
       };
       await axios.delete(
-        "http://localhost:8000/student/delete",
+        "https://sliit-research-management.herokuapp.com/student/delete",
         {
           data,
         }

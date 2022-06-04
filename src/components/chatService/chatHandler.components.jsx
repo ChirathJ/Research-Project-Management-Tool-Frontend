@@ -6,7 +6,7 @@ import axios from "axios";
 import { Table } from "react-bootstrap";
 import AuthContext from "../userManagement/context/LoginContext";
 
-const socket = io.connect("http://localhost:8000");
+const socket = io.connect("https://sliit-research-management.herokuapp.com");
 
 function ChatHandler() {
   const { loggedIn } = useContext(AuthContext);
@@ -26,12 +26,18 @@ function ChatHandler() {
 
   async function getData() {
     try {
-      const result = await axios.get("http://localhost:8000/account/");
+      const result = await axios.get(
+        "https://sliit-research-management.herokuapp.com/account/"
+      );
       if (loggedIn === "Student") {
-        const group = await axios.get("http://localhost:8000/chat/find-group");
+        const group = await axios.get(
+          "https://sliit-research-management.herokuapp.com/chat/find-group"
+        );
         setGroup(group.data.allgroups);
       } else {
-        const group = await axios.get("http://localhost:8000/groups/");
+        const group = await axios.get(
+          "https://sliit-research-management.herokuapp.com/groups/"
+        );
         setGroup(group.data.allgroups);
       }
       setUsername(result.data.name);

@@ -7,12 +7,15 @@ function UpdateStudent() {
 
   const navigate = useNavigate();
 
-/**
- * It takes the edited data from the form and sends it to the server to update the database.
- */
+  /**
+   * It takes the edited data from the form and sends it to the server to update the database.
+   */
   async function edit(editedData) {
     try {
-      await axios.put("http://localhost:8000/student/update", editedData);
+      await axios.put(
+        "https://sliit-research-management.herokuapp.com/student/update",
+        editedData
+      );
       alert("Updated Successfully");
 
       navigate("/students");
@@ -22,7 +25,7 @@ function UpdateStudent() {
   }
 
   return (
-/* A component that is used to edit the data. */
+    /* A component that is used to edit the data. */
     <BlockEdit
       data={state}
       edit={edit}

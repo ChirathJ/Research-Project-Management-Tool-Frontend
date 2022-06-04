@@ -14,7 +14,9 @@ function AllAdmin() {
    */
   async function getData() {
     try {
-      const result = await axios.get("http://localhost:8000/admin/");
+      const result = await axios.get(
+        "https://sliit-research-management.herokuapp.com/admin/"
+      );
 
       setAdminData(result.data);
     } catch (err) {

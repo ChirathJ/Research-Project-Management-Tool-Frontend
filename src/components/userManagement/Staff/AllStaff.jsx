@@ -13,7 +13,9 @@ function AllStaff() {
    */
   async function getData() {
     try {
-      const result = await axios.get("http://localhost:8000/staff/");
+      const result = await axios.get(
+        "https://sliit-research-management.herokuapp.com/staff/"
+      );
 
       setStaffData(result.data);
     } catch (err) {

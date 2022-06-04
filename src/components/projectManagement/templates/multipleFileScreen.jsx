@@ -12,7 +12,9 @@ function MultipleFileScreen() {
     async function getMultipleFileData() {
       try {
         await axios
-          .get("http://localhost:8000/api/getAllMultipleFiles/")
+          .get(
+            "https://sliit-research-management.herokuapp.com/api/getAllMultipleFiles/"
+          )
           .then((res) => {
             if (res.status === 200) {
               setDataList(res.data);
@@ -33,7 +35,7 @@ function MultipleFileScreen() {
       if (window.confirm("This File Will Be Deleted!")) {
         await axios
           .delete(
-            `http://localhost:8000/api/multipleFiles/delete/${details._id}`
+            `https://sliit-research-management.herokuapp.com/api/multipleFiles/delete/${details._id}`
           )
           .then((res) => {
             console.log(res);
@@ -67,7 +69,7 @@ function MultipleFileScreen() {
               {item.files.map((file, index) => (
                 <div className="col-10" key={index}>
                   <a
-                    href={`http://localhost:8000/${file.filePath}`}
+                    href={`https://sliit-research-management.herokuapp.com/${file.filePath}`}
                     download={``}
                   >
                     {file.fileName}
@@ -95,7 +97,7 @@ function MultipleFileScreen() {
               {item.files.map((file, index) => (
                 <div className="col-10" key={index}>
                   <a
-                    href={`http://localhost:8000/${file.filePath}`}
+                    href={`https://sliit-research-management.herokuapp.com/${file.filePath}`}
                     download={``}
                   >
                     {file.fileName}

@@ -9,10 +9,10 @@ function ChangePassword() {
 
   const navigate = useNavigate();
 
-/**
- * It takes the user's current password, new password, and new password verification, and sends it to
- * the server to be updated.
- */
+  /**
+   * It takes the user's current password, new password, and new password verification, and sends it to
+   * the server to be updated.
+   */
   async function update(e) {
     e.preventDefault();
 
@@ -24,7 +24,7 @@ function ChangePassword() {
       };
 
       await axios.put(
-        "http://localhost:8000/account/changepassword",
+        "https://sliit-research-management.herokuapp.com/account/changepassword",
         updatedData
       );
       alert("Changed Password Successfully");

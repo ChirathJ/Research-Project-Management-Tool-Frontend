@@ -15,7 +15,10 @@ function AddAdmin() {
    */
   async function register(registerData) {
     try {
-      await axios.post("http://localhost:8000/admin/register", registerData);
+      await axios.post(
+        "https://sliit-research-management.herokuapp.com/admin/register",
+        registerData
+      );
       alert("Verification Email Sent successfully");
       await getLoggedIn();
       navigate("/admins");

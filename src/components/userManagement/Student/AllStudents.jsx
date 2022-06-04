@@ -14,7 +14,9 @@ function AllStudents() {
    */
   async function getData() {
     try {
-      const result = await axios.get("http://localhost:8000/student/");
+      const result = await axios.get(
+        "https://sliit-research-management.herokuapp.com/student/"
+      );
 
       setStudentsData(result.data);
     } catch (err) {

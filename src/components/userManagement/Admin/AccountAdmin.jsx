@@ -24,9 +24,12 @@ function AccountAdmin() {
       const data = {
         id: state._id,
       };
-      await axios.delete("http://localhost:8000/admin/delete", {
-        data,
-      });
+      await axios.delete(
+        "https://sliit-research-management.herokuapp.com/admin/delete",
+        {
+          data,
+        }
+      );
       navigate("/staffs");
     } catch (err) {
       console.log(err);

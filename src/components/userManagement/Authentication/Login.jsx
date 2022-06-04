@@ -21,7 +21,10 @@ function Login() {
         password,
       };
 
-      await axios.post("http://localhost:8000/auth/login", loginData);
+      await axios.post(
+        "https://sliit-research-management.herokuapp.com/auth/login",
+        loginData
+      );
       navigate("/");
     } catch (err) {
       console.error(err.response.data.errorMessage);

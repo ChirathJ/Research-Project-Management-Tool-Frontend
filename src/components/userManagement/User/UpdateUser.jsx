@@ -10,12 +10,15 @@ function UpdateUser() {
   const navigate = useNavigate();
   const { loggedIn } = useContext(AuthContext);
 
-/**
- * It takes the edited data from the form and sends it to the server to update the database.
- */
+  /**
+   * It takes the edited data from the form and sends it to the server to update the database.
+   */
   async function edit(editedData) {
     try {
-      await axios.put("http://localhost:8000/account/update", editedData);
+      await axios.put(
+        "https://sliit-research-management.herokuapp.com/account/update",
+        editedData
+      );
       alert("Updated Successfully");
 
       navigate("/account");
@@ -25,7 +28,7 @@ function UpdateUser() {
   }
 
   return (
-/* A component that is used to edit the user. */
+    /* A component that is used to edit the user. */
     <BlockEdit
       data={state}
       edit={edit}

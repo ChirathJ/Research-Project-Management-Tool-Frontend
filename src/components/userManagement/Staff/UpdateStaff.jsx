@@ -12,7 +12,10 @@ function UpdateStaff() {
    */
   async function edit(editedData) {
     try {
-      await axios.put("http://localhost:8000/staff/update", editedData);
+      await axios.put(
+        "https://sliit-research-management.herokuapp.com/staff/update",
+        editedData
+      );
       alert("Updated Successfully");
 
       navigate("/staffs");

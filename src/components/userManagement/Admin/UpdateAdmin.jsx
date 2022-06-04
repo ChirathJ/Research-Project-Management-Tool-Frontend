@@ -12,7 +12,10 @@ function UpdateAdmin() {
    */
   async function edit(editedData) {
     try {
-      await axios.put("http://localhost:8000/admin/update", editedData);
+      await axios.put(
+        "https://sliit-research-management.herokuapp.com/admin/update",
+        editedData
+      );
       alert("Updated Successfully");
 
       navigate("/admins");

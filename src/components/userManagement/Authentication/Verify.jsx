@@ -14,7 +14,7 @@ function Verify() {
    */
   async function verifyUrl() {
     try {
-      const url = `http://localhost:8000/auth/verify/${param.id}/${param.token}`;
+      const url = `https://sliit-research-management.herokuapp.com/auth/verify/${param.id}/${param.token}`;
       await axios.get(url);
 
       setIsVerify(true);

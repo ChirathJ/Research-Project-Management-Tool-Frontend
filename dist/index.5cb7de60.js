@@ -28897,22 +28897,12 @@ function SiteRouters() {
                                     __self: this
                                 }),
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                                    path: "/chat",
-                                    element: /*#__PURE__*/ _jsxRuntime.jsx(_chatHandlerComponentsDefault.default, {
-                                    }),
-                                    __source: {
-                                        fileName: "src/components/routers/SiteRouters.jsx",
-                                        lineNumber: 96
-                                    },
-                                    __self: this
-                                }),
-                                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                                     path: "/researchTopic/save",
                                     element: /*#__PURE__*/ _jsxRuntime.jsx(_researchTopicAddDefault.default, {
                                     }),
                                     __source: {
                                         fileName: "src/components/routers/SiteRouters.jsx",
-                                        lineNumber: 98
+                                        lineNumber: 96
                                     },
                                     __self: this
                                 }),
@@ -28922,7 +28912,7 @@ function SiteRouters() {
                                     }),
                                     __source: {
                                         fileName: "src/components/routers/SiteRouters.jsx",
-                                        lineNumber: 103
+                                        lineNumber: 101
                                     },
                                     __self: this
                                 })
@@ -28936,7 +28926,7 @@ function SiteRouters() {
                                     }),
                                     __source: {
                                         fileName: "src/components/routers/SiteRouters.jsx",
-                                        lineNumber: 111
+                                        lineNumber: 109
                                     },
                                     __self: this
                                 }),
@@ -28946,7 +28936,7 @@ function SiteRouters() {
                                     }),
                                     __source: {
                                         fileName: "src/components/routers/SiteRouters.jsx",
-                                        lineNumber: 112
+                                        lineNumber: 110
                                     },
                                     __self: this
                                 }),
@@ -28956,7 +28946,7 @@ function SiteRouters() {
                                     }),
                                     __source: {
                                         fileName: "src/components/routers/SiteRouters.jsx",
-                                        lineNumber: 113
+                                        lineNumber: 111
                                     },
                                     __self: this
                                 }),
@@ -28966,21 +28956,31 @@ function SiteRouters() {
                                     }),
                                     __source: {
                                         fileName: "src/components/routers/SiteRouters.jsx",
-                                        lineNumber: 117
+                                        lineNumber: 115
                                     },
                                     __self: this
                                 })
                             ]
                         }) : "",
-                        loggedIn === "Staff" || loggedIn === "Admin" || loggedIn === "Student" ? /*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
+                        loggedIn === "Staff" || loggedIn === "Admin" || loggedIn === "Student" ? /*#__PURE__*/ _jsxRuntime.jsxs(_jsxRuntime.Fragment, {
                             children: [
+                                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                                    path: "/chat",
+                                    element: /*#__PURE__*/ _jsxRuntime.jsx(_chatHandlerComponentsDefault.default, {
+                                    }),
+                                    __source: {
+                                        fileName: "src/components/routers/SiteRouters.jsx",
+                                        lineNumber: 127
+                                    },
+                                    __self: this
+                                }),
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                                     path: "/templates/show",
                                     element: /*#__PURE__*/ _jsxRuntime.jsx(_fileShowScreenDefault.default, {
                                     }),
                                     __source: {
                                         fileName: "src/components/routers/SiteRouters.jsx",
-                                        lineNumber: 129
+                                        lineNumber: 128
                                     },
                                     __self: this
                                 })
@@ -44543,7 +44543,7 @@ function LogOut() {
    * the logout route on the server, and then navigates to the home page.
    */ async function logOut() {
         try {
-            await _axiosDefault.default.get("http://localhost:8000/auth/logout");
+            await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/auth/logout");
             navigate("/");
         } catch (err) {
             console.error(err);
@@ -44554,7 +44554,7 @@ function LogOut() {
         onClick: logOut,
         __source: {
             fileName: "src/components/userManagement/Authentication/Logout.jsx",
-            lineNumber: 22
+            lineNumber: 24
         },
         __self: this,
         children: "Log out"
@@ -44600,7 +44600,7 @@ function AuthContextProvider(props) {
    * '/login/loggedin' and sets the state of the loggedIn variable to the response data.
    */ async function getLoggedIn() {
         try {
-            const loggedInRes = await _axiosDefault.default.get("http://localhost:8000/auth/loggedin", {
+            const loggedInRes = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/auth/loggedin", {
                 withCredentials: true
             });
             setLoggedIn(loggedInRes.data);
@@ -44679,7 +44679,7 @@ function Register() {
    * user that the verification email was sent successfully, and then navigates to the home page.
    */ async function register(registerData) {
         try {
-            await _axiosDefault.default.post("http://localhost:8000/student/register", registerData);
+            await _axiosDefault.default.post("https://sliit-research-management.herokuapp.com/student/register", registerData);
             alert("Verification Email Sent successfully");
             //await getLoggedIn();
             navigate("/");
@@ -44693,7 +44693,7 @@ function Register() {
         heading: "Register",
         __source: {
             fileName: "src/components/userManagement/Student/Register.jsx",
-            lineNumber: 25
+            lineNumber: 28
         },
         __self: this
     }));
@@ -45297,12 +45297,12 @@ function AccountUser() {
     const [userData, setUserData] = _react.useState("");
     const navigate = _reactRouterDom.useNavigate();
     /**
- * If the user has a date of birth, then create a new date object from the date of birth, convert it to
- * ISO string, and then take the first 10 characters of that string and assign it to a new property
- * called dobEdited.
- */ async function getData() {
+   * If the user has a date of birth, then create a new date object from the date of birth, convert it to
+   * ISO string, and then take the first 10 characters of that string and assign it to a new property
+   * called dobEdited.
+   */ async function getData() {
         try {
-            const result = await _axiosDefault.default.get("http://localhost:8000/account/");
+            const result = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/account/");
             if (result.data.dob) {
                 const dobEdited = new Date(result.data.dob).toISOString().substring(0, 10);
                 result.data.dobEdited = dobEdited;
@@ -45313,30 +45313,30 @@ function AccountUser() {
         }
     }
     /**
- * If the user confirms the deletion of their account, then delete the account and navigate to the home
- * page.
- * @returns the deleteUser function.
- */ async function deleteUser() {
+   * If the user confirms the deletion of their account, then delete the account and navigate to the home
+   * page.
+   * @returns the deleteUser function.
+   */ async function deleteUser() {
         try {
             if (!window.confirm("Are you sure you wish to delete this account?")) return;
             console.log("delete user");
-            await _axiosDefault.default.delete("http://localhost:8000/account/delete");
+            await _axiosDefault.default.delete("https://sliit-research-management.herokuapp.com/account/delete");
             navigate("/");
         } catch (err) {
             console.log(err);
         }
     }
     /**
- * When the user clicks the update button, navigate to the update page and pass the userData object as
- * state.
- */ async function updateUser() {
+   * When the user clicks the update button, navigate to the update page and pass the userData object as
+   * state.
+   */ async function updateUser() {
         navigate("/account/update", {
             state: userData
         });
     }
     /**
- * When the user clicks the button, navigate to the changepassword page.
- */ async function changepassword() {
+   * When the user clicks the button, navigate to the changepassword page.
+   */ async function changepassword() {
         navigate("/account/changepassword");
     }
     /* Calling the getData function when the component is mounted. */ _react.useEffect(()=>{
@@ -45351,7 +45351,7 @@ function AccountUser() {
         changepassword: changepassword,
         __source: {
             fileName: "src/components/userManagement/User/AccountUser.jsx",
-            lineNumber: 76
+            lineNumber: 80
         },
         __self: this
     }));
@@ -45963,10 +45963,10 @@ function UpdateUser() {
     const navigate = _reactRouterDom.useNavigate();
     const { loggedIn  } = _react.useContext(_loginContextDefault.default);
     /**
- * It takes the edited data from the form and sends it to the server to update the database.
- */ async function edit(editedData) {
+   * It takes the edited data from the form and sends it to the server to update the database.
+   */ async function edit(editedData) {
         try {
-            await _axiosDefault.default.put("http://localhost:8000/account/update", editedData);
+            await _axiosDefault.default.put("https://sliit-research-management.herokuapp.com/account/update", editedData);
             alert("Updated Successfully");
             navigate("/account");
         } catch (err) {
@@ -45980,7 +45980,7 @@ function UpdateUser() {
         loggedIn: loggedIn,
         __source: {
             fileName: "src/components/userManagement/User/UpdateUser.jsx",
-            lineNumber: 29
+            lineNumber: 32
         },
         __self: this
     }));
@@ -46517,7 +46517,7 @@ function AllStudents() {
    * of the studentsData variable to the data that was received from the server.
    */ async function getData() {
         try {
-            const result = await _axiosDefault.default.get("http://localhost:8000/student/");
+            const result = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/student/");
             setStudentsData(result.data);
         } catch (err) {
             console.log(err);
@@ -46540,7 +46540,7 @@ function AllStudents() {
         heading: "Students",
         __source: {
             fileName: "src/components/userManagement/Student/AllStudents.jsx",
-            lineNumber: 40
+            lineNumber: 42
         },
         __self: this
     }));
@@ -46829,7 +46829,7 @@ function AllStaff() {
    * When the component mounts, get the data from the API and set the state with the data.
    */ async function getData() {
         try {
-            const result = await _axiosDefault.default.get("http://localhost:8000/staff/");
+            const result = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/staff/");
             setStaffData(result.data);
         } catch (err) {
             console.log(err);
@@ -46858,7 +46858,7 @@ function AllStaff() {
         heading: "Staffs",
         __source: {
             fileName: "src/components/userManagement/Staff/AllStaff.jsx",
-            lineNumber: 46
+            lineNumber: 48
         },
         __self: this
     }));
@@ -46900,12 +46900,12 @@ function AddStaff() {
     const navigate = _reactRouterDom.useNavigate();
     const { getLoggedIn  } = _react.useContext(_loginContextDefault.default);
     /**
- * It sends a post request to the server with the registerData object, then it alerts the user that the
- * verification email was sent successfully, then it calls the getLoggedIn function, then it navigates
- * to the /staffs route.
- */ async function register(registerData) {
+   * It sends a post request to the server with the registerData object, then it alerts the user that the
+   * verification email was sent successfully, then it calls the getLoggedIn function, then it navigates
+   * to the /staffs route.
+   */ async function register(registerData) {
         try {
-            await _axiosDefault.default.post("http://localhost:8000/staff/register", registerData);
+            await _axiosDefault.default.post("https://sliit-research-management.herokuapp.com/staff/register", registerData);
             alert("Verification Email Sent successfully");
             await getLoggedIn();
             navigate("/staffs");
@@ -46918,7 +46918,7 @@ function AddStaff() {
         heading: "Add Staff",
         __source: {
             fileName: "src/components/userManagement/Staff/AddStaff.jsx",
-            lineNumber: 29
+            lineNumber: 31
         },
         __self: this
     }));
@@ -46960,7 +46960,7 @@ function UpdateStaff() {
    * It takes the edited data from the form and sends it to the server to update the database.
    */ async function edit(editedData) {
         try {
-            await _axiosDefault.default.put("http://localhost:8000/staff/update", editedData);
+            await _axiosDefault.default.put("https://sliit-research-management.herokuapp.com/staff/update", editedData);
             alert("Updated Successfully");
             navigate("/staffs");
         } catch (err) {
@@ -46974,7 +46974,7 @@ function UpdateStaff() {
         loggedIn: "Staff",
         __source: {
             fileName: "src/components/userManagement/Staff/UpdateStaff.jsx",
-            lineNumber: 26
+            lineNumber: 29
         },
         __self: this
     }));
@@ -47017,15 +47017,15 @@ function AccountStaff() {
     }
     const navigate = _reactRouterDom.useNavigate();
     /**
- * It deletes a staff member from the database.
- * @returns the deleteStaff function.
- */ async function deleteStaff() {
+   * It deletes a staff member from the database.
+   * @returns the deleteStaff function.
+   */ async function deleteStaff() {
         try {
             if (!window.confirm("Are you sure you wish to delete this account?")) return;
             const data = {
                 id: state._id
             };
-            await _axiosDefault.default.delete("http://localhost:8000/staff/delete", {
+            await _axiosDefault.default.delete("https://sliit-research-management.herokuapp.com/staff/delete", {
                 data
             });
             navigate("/staffs");
@@ -47034,9 +47034,9 @@ function AccountStaff() {
         }
     }
     /**
- * When the user clicks the update button, navigate to the update page and pass the state as a
- * parameter.
- */ async function updateStaff() {
+   * When the user clicks the update button, navigate to the update page and pass the state as a
+   * parameter.
+   */ async function updateStaff() {
         console.log("staff");
         navigate("/staffs/update", {
             state: state
@@ -47050,7 +47050,7 @@ function AccountStaff() {
         edit: updateStaff,
         __source: {
             fileName: "src/components/userManagement/Staff/AccountStaff.jsx",
-            lineNumber: 49
+            lineNumber: 52
         },
         __self: this
     }));
@@ -47089,10 +47089,10 @@ function UpdateStudent() {
     const { state  } = _reactRouterDom.useLocation();
     const navigate = _reactRouterDom.useNavigate();
     /**
- * It takes the edited data from the form and sends it to the server to update the database.
- */ async function edit(editedData) {
+   * It takes the edited data from the form and sends it to the server to update the database.
+   */ async function edit(editedData) {
         try {
-            await _axiosDefault.default.put("http://localhost:8000/student/update", editedData);
+            await _axiosDefault.default.put("https://sliit-research-management.herokuapp.com/student/update", editedData);
             alert("Updated Successfully");
             navigate("/students");
         } catch (err) {
@@ -47106,7 +47106,7 @@ function UpdateStudent() {
         loggedIn: "Student",
         __source: {
             fileName: "src/components/userManagement/Student/UpdateStudent.jsx",
-            lineNumber: 26
+            lineNumber: 29
         },
         __self: this
     }));
@@ -47157,7 +47157,7 @@ function AccountStudent() {
             const data = {
                 id: state._id
             };
-            await _axiosDefault.default.delete("http://localhost:8000/student/delete", {
+            await _axiosDefault.default.delete("https://sliit-research-management.herokuapp.com/student/delete", {
                 data
             });
             navigate("/students");
@@ -47181,7 +47181,7 @@ function AccountStudent() {
         edit: updateStudent,
         __source: {
             fileName: "src/components/userManagement/Student/AccountStudent.jsx",
-            lineNumber: 46
+            lineNumber: 49
         },
         __self: this
     }));
@@ -47221,9 +47221,9 @@ function ChangePassword() {
     const [newPasswordVerify, setNewPasswordVerify] = _react.useState("");
     const navigate = _reactRouterDom.useNavigate();
     /**
- * It takes the user's current password, new password, and new password verification, and sends it to
- * the server to be updated.
- */ async function update(e) {
+   * It takes the user's current password, new password, and new password verification, and sends it to
+   * the server to be updated.
+   */ async function update(e) {
         e.preventDefault();
         try {
             const updatedData = {
@@ -47231,7 +47231,7 @@ function ChangePassword() {
                 newPassword,
                 newPasswordVerify
             };
-            await _axiosDefault.default.put("http://localhost:8000/account/changepassword", updatedData);
+            await _axiosDefault.default.put("https://sliit-research-management.herokuapp.com/account/changepassword", updatedData);
             alert("Changed Password Successfully");
             navigate("/");
         } catch (err) {
@@ -47433,7 +47433,7 @@ function AllAdmin() {
    * of the adminData variable to the data that was received from the server.
    */ async function getData() {
         try {
-            const result = await _axiosDefault.default.get("http://localhost:8000/admin/");
+            const result = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/admin/");
             setAdminData(result.data);
         } catch (err) {
             console.log(err);
@@ -47463,7 +47463,7 @@ to it. */ /*#__PURE__*/ _jsxRuntime.jsx(_listBlockComponentsDefault.default, {
         heading: "Admins",
         __source: {
             fileName: "src/components/userManagement/Admin/AllAdmin.jsx",
-            lineNumber: 48
+            lineNumber: 50
         },
         __self: this
     }));
@@ -47514,7 +47514,7 @@ function AccountAdmin() {
             const data = {
                 id: state._id
             };
-            await _axiosDefault.default.delete("http://localhost:8000/admin/delete", {
+            await _axiosDefault.default.delete("https://sliit-research-management.herokuapp.com/admin/delete", {
                 data
             });
             navigate("/staffs");
@@ -47538,7 +47538,7 @@ function AccountAdmin() {
         edit: updateAdmin,
         __source: {
             fileName: "src/components/userManagement/Admin/AccountAdmin.jsx",
-            lineNumber: 46
+            lineNumber: 49
         },
         __self: this
     }));
@@ -47580,7 +47580,7 @@ function UpdateAdmin() {
    * It takes in an object, sends it to the server, and then navigates to a different page.
    */ async function edit(editedData) {
         try {
-            await _axiosDefault.default.put("http://localhost:8000/admin/update", editedData);
+            await _axiosDefault.default.put("https://sliit-research-management.herokuapp.com/admin/update", editedData);
             alert("Updated Successfully");
             navigate("/admins");
         } catch (err) {
@@ -47594,7 +47594,7 @@ function UpdateAdmin() {
         loggedIn: "Admin",
         __source: {
             fileName: "src/components/userManagement/Admin/UpdateAdmin.jsx",
-            lineNumber: 26
+            lineNumber: 29
         },
         __self: this
     }));
@@ -47641,7 +47641,7 @@ function AddAdmin() {
    * navigates to the /admins route.
    */ async function register(registerData) {
         try {
-            await _axiosDefault.default.post("http://localhost:8000/admin/register", registerData);
+            await _axiosDefault.default.post("https://sliit-research-management.herokuapp.com/admin/register", registerData);
             alert("Verification Email Sent successfully");
             await getLoggedIn();
             navigate("/admins");
@@ -47655,7 +47655,7 @@ props. */ return(/*#__PURE__*/ _jsxRuntime.jsx(_registerBlockComponentsDefault.d
         heading: "Add Admin",
         __source: {
             fileName: "src/components/userManagement/Admin/AddAdmin.jsx",
-            lineNumber: 29
+            lineNumber: 32
         },
         __self: this
     }));
@@ -47695,7 +47695,7 @@ var _reactBootstrap = require("react-bootstrap");
 var _loginContext = require("../userManagement/context/LoginContext");
 var _loginContextDefault = parcelHelpers.interopDefault(_loginContext);
 var _s = $RefreshSig$();
-const socket = _socketIoClientDefault.default.connect("http://localhost:8000");
+const socket = _socketIoClientDefault.default.connect("https://sliit-research-management.herokuapp.com");
 function ChatHandler() {
     _s();
     const { loggedIn  } = _react.useContext(_loginContextDefault.default);
@@ -47718,12 +47718,12 @@ function ChatHandler() {
    * It gets the username and group from the database and sets the state of the username and group.
    */ async function getData() {
         try {
-            const result = await _axiosDefault.default.get("http://localhost:8000/account/");
+            const result = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/account/");
             if (loggedIn === "Student") {
-                const group1 = await _axiosDefault.default.get("http://localhost:8000/chat/find-group");
+                const group1 = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/chat/find-group");
                 setGroup(group1.data.allgroups);
             } else {
-                const group1 = await _axiosDefault.default.get("http://localhost:8000/groups/");
+                const group1 = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/groups/");
                 setGroup(group1.data.allgroups);
             }
             setUsername(result.data.name);
@@ -47740,14 +47740,14 @@ function ChatHandler() {
             return(/*#__PURE__*/ _jsxRuntime.jsxs("tr", {
                 __source: {
                     fileName: "src/components/chatService/chatHandler.components.jsx",
-                    lineNumber: 59
+                    lineNumber: 65
                 },
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx("td", {
                         __source: {
                             fileName: "src/components/chatService/chatHandler.components.jsx",
-                            lineNumber: 60
+                            lineNumber: 66
                         },
                         __self: this,
                         children: index + 1
@@ -47755,7 +47755,7 @@ function ChatHandler() {
                     /*#__PURE__*/ _jsxRuntime.jsx("td", {
                         __source: {
                             fileName: "src/components/chatService/chatHandler.components.jsx",
-                            lineNumber: 61
+                            lineNumber: 67
                         },
                         __self: this,
                         children: current.gid
@@ -47763,7 +47763,7 @@ function ChatHandler() {
                     /*#__PURE__*/ _jsxRuntime.jsx("td", {
                         __source: {
                             fileName: "src/components/chatService/chatHandler.components.jsx",
-                            lineNumber: 62
+                            lineNumber: 68
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx("button", {
@@ -47771,7 +47771,7 @@ function ChatHandler() {
                             onClick: joinRoom.bind(this, current.gid),
                             __source: {
                                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                                lineNumber: 63
+                                lineNumber: 69
                             },
                             __self: this,
                             children: "Join"
@@ -47788,21 +47788,21 @@ function ChatHandler() {
         className: "App",
         __source: {
             fileName: "src/components/chatService/chatHandler.components.jsx",
-            lineNumber: 81
+            lineNumber: 87
         },
         __self: this,
         children: !showChat ? /*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "list",
             __source: {
                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                lineNumber: 83
+                lineNumber: 89
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 className: "list-sub-table",
                 __source: {
                     fileName: "src/components/chatService/chatHandler.components.jsx",
-                    lineNumber: 84
+                    lineNumber: 90
                 },
                 __self: this,
                 children: [
@@ -47810,13 +47810,13 @@ function ChatHandler() {
                         className: "head",
                         __source: {
                             fileName: "src/components/chatService/chatHandler.components.jsx",
-                            lineNumber: 85
+                            lineNumber: 91
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                             __source: {
                                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                                lineNumber: 86
+                                lineNumber: 92
                             },
                             __self: this,
                             children: "Chat Groups"
@@ -47825,7 +47825,7 @@ function ChatHandler() {
                     /*#__PURE__*/ _jsxRuntime.jsx("hr", {
                         __source: {
                             fileName: "src/components/chatService/chatHandler.components.jsx",
-                            lineNumber: 88
+                            lineNumber: 94
                         },
                         __self: this
                     }),
@@ -47833,27 +47833,27 @@ function ChatHandler() {
                         className: "table table-hover",
                         __source: {
                             fileName: "src/components/chatService/chatHandler.components.jsx",
-                            lineNumber: 89
+                            lineNumber: 95
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx("thead", {
                                 __source: {
                                     fileName: "src/components/chatService/chatHandler.components.jsx",
-                                    lineNumber: 90
+                                    lineNumber: 96
                                 },
                                 __self: this,
                                 children: /*#__PURE__*/ _jsxRuntime.jsxs("tr", {
                                     __source: {
                                         fileName: "src/components/chatService/chatHandler.components.jsx",
-                                        lineNumber: 91
+                                        lineNumber: 97
                                     },
                                     __self: this,
                                     children: [
                                         /*#__PURE__*/ _jsxRuntime.jsx("th", {
                                             __source: {
                                                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                                                lineNumber: 92
+                                                lineNumber: 98
                                             },
                                             __self: this,
                                             children: "#"
@@ -47861,7 +47861,7 @@ function ChatHandler() {
                                         /*#__PURE__*/ _jsxRuntime.jsx("th", {
                                             __source: {
                                                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                                                lineNumber: 93
+                                                lineNumber: 99
                                             },
                                             __self: this,
                                             children: "Name"
@@ -47869,7 +47869,7 @@ function ChatHandler() {
                                         /*#__PURE__*/ _jsxRuntime.jsx("th", {
                                             __source: {
                                                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                                                lineNumber: 94
+                                                lineNumber: 100
                                             },
                                             __self: this,
                                             children: "Action"
@@ -47880,7 +47880,7 @@ function ChatHandler() {
                             /*#__PURE__*/ _jsxRuntime.jsx("tbody", {
                                 __source: {
                                     fileName: "src/components/chatService/chatHandler.components.jsx",
-                                    lineNumber: 97
+                                    lineNumber: 103
                                 },
                                 __self: this,
                                 children: groupList()
@@ -47895,7 +47895,7 @@ function ChatHandler() {
             room: room,
             __source: {
                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                lineNumber: 103
+                lineNumber: 109
             },
             __self: this
         })
@@ -59415,7 +59415,7 @@ function AddGroup() {
         console.log("AddGroup");
     }, []);
     const handleSubmit = (e)=>{
-        const url = "http://localhost:8000/groups/";
+        const url = "https://sliit-research-management.herokuapp.com/groups/";
         const data = {
             student1: student1,
             student2: student2,
@@ -59433,33 +59433,33 @@ function AddGroup() {
         className: "main",
         __source: {
             fileName: "src/components/groupsManagement/addGroup.js",
-            lineNumber: 38
+            lineNumber: 34
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "sub-main",
             __source: {
                 fileName: "src/components/groupsManagement/addGroup.js",
-                lineNumber: 39
+                lineNumber: 35
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/groupsManagement/addGroup.js",
-                    lineNumber: 40
+                    lineNumber: 36
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                     __source: {
                         fileName: "src/components/groupsManagement/addGroup.js",
-                        lineNumber: 41
+                        lineNumber: 37
                     },
                     __self: this,
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                             __source: {
                                 fileName: "src/components/groupsManagement/addGroup.js",
-                                lineNumber: 42
+                                lineNumber: 38
                             },
                             __self: this,
                             children: "Create Research Group"
@@ -59467,7 +59467,7 @@ function AddGroup() {
                         /*#__PURE__*/ _jsxRuntime.jsxs("form", {
                             __source: {
                                 fileName: "src/components/groupsManagement/addGroup.js",
-                                lineNumber: 43
+                                lineNumber: 39
                             },
                             __self: this,
                             children: [
@@ -59475,7 +59475,7 @@ function AddGroup() {
                                     class: "form-group",
                                     __source: {
                                         fileName: "src/components/groupsManagement/addGroup.js",
-                                        lineNumber: 44
+                                        lineNumber: 40
                                     },
                                     __self: this,
                                     children: [
@@ -59483,7 +59483,7 @@ function AddGroup() {
                                             for: "text1",
                                             __source: {
                                                 fileName: "src/components/groupsManagement/addGroup.js",
-                                                lineNumber: 45
+                                                lineNumber: 41
                                             },
                                             __self: this,
                                             children: "Member 1 "
@@ -59497,7 +59497,7 @@ function AddGroup() {
                                             ,
                                             __source: {
                                                 fileName: "src/components/groupsManagement/addGroup.js",
-                                                lineNumber: 46
+                                                lineNumber: 42
                                             },
                                             __self: this
                                         })
@@ -59507,7 +59507,7 @@ function AddGroup() {
                                     class: "form-group",
                                     __source: {
                                         fileName: "src/components/groupsManagement/addGroup.js",
-                                        lineNumber: 55
+                                        lineNumber: 51
                                     },
                                     __self: this,
                                     children: [
@@ -59515,7 +59515,7 @@ function AddGroup() {
                                             for: "text2",
                                             __source: {
                                                 fileName: "src/components/groupsManagement/addGroup.js",
-                                                lineNumber: 56
+                                                lineNumber: 52
                                             },
                                             __self: this,
                                             children: "Member 2"
@@ -59529,7 +59529,7 @@ function AddGroup() {
                                             ,
                                             __source: {
                                                 fileName: "src/components/groupsManagement/addGroup.js",
-                                                lineNumber: 57
+                                                lineNumber: 53
                                             },
                                             __self: this
                                         })
@@ -59539,7 +59539,7 @@ function AddGroup() {
                                     class: "form-group",
                                     __source: {
                                         fileName: "src/components/groupsManagement/addGroup.js",
-                                        lineNumber: 66
+                                        lineNumber: 62
                                     },
                                     __self: this,
                                     children: [
@@ -59547,7 +59547,7 @@ function AddGroup() {
                                             for: "text3",
                                             __source: {
                                                 fileName: "src/components/groupsManagement/addGroup.js",
-                                                lineNumber: 67
+                                                lineNumber: 63
                                             },
                                             __self: this,
                                             children: "Member 3"
@@ -59561,7 +59561,7 @@ function AddGroup() {
                                             ,
                                             __source: {
                                                 fileName: "src/components/groupsManagement/addGroup.js",
-                                                lineNumber: 68
+                                                lineNumber: 64
                                             },
                                             __self: this
                                         })
@@ -59571,7 +59571,7 @@ function AddGroup() {
                                     class: "form-group",
                                     __source: {
                                         fileName: "src/components/groupsManagement/addGroup.js",
-                                        lineNumber: 77
+                                        lineNumber: 73
                                     },
                                     __self: this,
                                     children: [
@@ -59579,7 +59579,7 @@ function AddGroup() {
                                             for: "text4",
                                             __source: {
                                                 fileName: "src/components/groupsManagement/addGroup.js",
-                                                lineNumber: 78
+                                                lineNumber: 74
                                             },
                                             __self: this,
                                             children: "Member 4"
@@ -59593,7 +59593,7 @@ function AddGroup() {
                                             ,
                                             __source: {
                                                 fileName: "src/components/groupsManagement/addGroup.js",
-                                                lineNumber: 79
+                                                lineNumber: 75
                                             },
                                             __self: this
                                         })
@@ -59603,7 +59603,7 @@ function AddGroup() {
                                     className: "login-button",
                                     __source: {
                                         fileName: "src/components/groupsManagement/addGroup.js",
-                                        lineNumber: 87
+                                        lineNumber: 83
                                     },
                                     __self: this,
                                     children: /*#__PURE__*/ _jsxRuntime.jsx("button", {
@@ -59612,7 +59612,7 @@ function AddGroup() {
                                         onClick: handleSubmit,
                                         __source: {
                                             fileName: "src/components/groupsManagement/addGroup.js",
-                                            lineNumber: 88
+                                            lineNumber: 84
                                         },
                                         __self: this,
                                         children: "Submit"
@@ -59657,7 +59657,7 @@ function AllGroups() {
     const [groups, setGroups] = _react.useState([]);
     _react.useEffect(()=>{
         console.log("use eff");
-        _axiosDefault.default.get("http://localhost:8000/groups/").then((res)=>{
+        _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/groups/").then((res)=>{
             console.log("res", res);
             setGroups(res.data.allgroups);
             console.log(groups);
@@ -59667,20 +59667,20 @@ function AllGroups() {
         class: "table ",
         __source: {
             fileName: "src/components/groupsManagement/allGroups.js",
-            lineNumber: 21
+            lineNumber: 19
         },
         __self: this,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsx("thead", {
                 __source: {
                     fileName: "src/components/groupsManagement/allGroups.js",
-                    lineNumber: 22
+                    lineNumber: 20
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsxs("tr", {
                     __source: {
                         fileName: "src/components/groupsManagement/allGroups.js",
-                        lineNumber: 23
+                        lineNumber: 21
                     },
                     __self: this,
                     children: [
@@ -59688,7 +59688,7 @@ function AllGroups() {
                             scope: "col",
                             __source: {
                                 fileName: "src/components/groupsManagement/allGroups.js",
-                                lineNumber: 24
+                                lineNumber: 22
                             },
                             __self: this,
                             children: "Group ID"
@@ -59697,7 +59697,7 @@ function AllGroups() {
                             scope: "col",
                             __source: {
                                 fileName: "src/components/groupsManagement/allGroups.js",
-                                lineNumber: 25
+                                lineNumber: 23
                             },
                             __self: this,
                             children: "student 1"
@@ -59706,7 +59706,7 @@ function AllGroups() {
                             scope: "col",
                             __source: {
                                 fileName: "src/components/groupsManagement/allGroups.js",
-                                lineNumber: 26
+                                lineNumber: 24
                             },
                             __self: this,
                             children: "student 2"
@@ -59715,7 +59715,7 @@ function AllGroups() {
                             scope: "col",
                             __source: {
                                 fileName: "src/components/groupsManagement/allGroups.js",
-                                lineNumber: 27
+                                lineNumber: 25
                             },
                             __self: this,
                             children: "student 3"
@@ -59724,7 +59724,7 @@ function AllGroups() {
                             scope: "col",
                             __source: {
                                 fileName: "src/components/groupsManagement/allGroups.js",
-                                lineNumber: 28
+                                lineNumber: 26
                             },
                             __self: this,
                             children: "student 4"
@@ -59735,20 +59735,20 @@ function AllGroups() {
             /*#__PURE__*/ _jsxRuntime.jsx("tbody", {
                 __source: {
                     fileName: "src/components/groupsManagement/allGroups.js",
-                    lineNumber: 32
+                    lineNumber: 29
                 },
                 __self: this,
                 children: groups && groups.map((group)=>/*#__PURE__*/ _jsxRuntime.jsxs("tr", {
                         __source: {
                             fileName: "src/components/groupsManagement/allGroups.js",
-                            lineNumber: 34
+                            lineNumber: 32
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx("td", {
                                 __source: {
                                     fileName: "src/components/groupsManagement/allGroups.js",
-                                    lineNumber: 35
+                                    lineNumber: 33
                                 },
                                 __self: this,
                                 children: group.gid
@@ -59756,7 +59756,7 @@ function AllGroups() {
                             /*#__PURE__*/ _jsxRuntime.jsx("td", {
                                 __source: {
                                     fileName: "src/components/groupsManagement/allGroups.js",
-                                    lineNumber: 36
+                                    lineNumber: 34
                                 },
                                 __self: this,
                                 children: group.student1
@@ -59764,7 +59764,7 @@ function AllGroups() {
                             /*#__PURE__*/ _jsxRuntime.jsx("td", {
                                 __source: {
                                     fileName: "src/components/groupsManagement/allGroups.js",
-                                    lineNumber: 37
+                                    lineNumber: 35
                                 },
                                 __self: this,
                                 children: group.student2
@@ -59772,7 +59772,7 @@ function AllGroups() {
                             /*#__PURE__*/ _jsxRuntime.jsx("td", {
                                 __source: {
                                     fileName: "src/components/groupsManagement/allGroups.js",
-                                    lineNumber: 38
+                                    lineNumber: 36
                                 },
                                 __self: this,
                                 children: group.student3
@@ -59780,7 +59780,7 @@ function AllGroups() {
                             /*#__PURE__*/ _jsxRuntime.jsx("td", {
                                 __source: {
                                     fileName: "src/components/groupsManagement/allGroups.js",
-                                    lineNumber: 39
+                                    lineNumber: 37
                                 },
                                 __self: this,
                                 children: group.student4
@@ -59833,7 +59833,7 @@ function Login() {
                 email,
                 password
             };
-            await _axiosDefault.default.post("http://localhost:8000/auth/login", loginData);
+            await _axiosDefault.default.post("https://sliit-research-management.herokuapp.com/auth/login", loginData);
             navigate("/");
         } catch (err) {
             console.error(err.response.data.errorMessage);
@@ -59844,21 +59844,21 @@ function Login() {
         className: "main",
         __source: {
             fileName: "src/components/userManagement/Authentication/Login.jsx",
-            lineNumber: 33
+            lineNumber: 36
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsxs("div", {
             className: "sub-main",
             __source: {
                 fileName: "src/components/userManagement/Authentication/Login.jsx",
-                lineNumber: 34
+                lineNumber: 37
             },
             __self: this,
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                     __source: {
                         fileName: "src/components/userManagement/Authentication/Login.jsx",
-                        lineNumber: 35
+                        lineNumber: 38
                     },
                     __self: this,
                     children: "Log in"
@@ -59866,7 +59866,7 @@ function Login() {
                 /*#__PURE__*/ _jsxRuntime.jsx("hr", {
                     __source: {
                         fileName: "src/components/userManagement/Authentication/Login.jsx",
-                        lineNumber: 36
+                        lineNumber: 39
                     },
                     __self: this
                 }),
@@ -59874,14 +59874,14 @@ function Login() {
                     onSubmit: login,
                     __source: {
                         fileName: "src/components/userManagement/Authentication/Login.jsx",
-                        lineNumber: 37
+                        lineNumber: 40
                     },
                     __self: this,
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx("label", {
                             __source: {
                                 fileName: "src/components/userManagement/Authentication/Login.jsx",
-                                lineNumber: 38
+                                lineNumber: 41
                             },
                             __self: this,
                             children: "E-mail"
@@ -59889,7 +59889,7 @@ function Login() {
                         /*#__PURE__*/ _jsxRuntime.jsx("div", {
                             __source: {
                                 fileName: "src/components/userManagement/Authentication/Login.jsx",
-                                lineNumber: 39
+                                lineNumber: 42
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx("input", {
@@ -59901,7 +59901,7 @@ function Login() {
                                 className: "form-input",
                                 __source: {
                                     fileName: "src/components/userManagement/Authentication/Login.jsx",
-                                    lineNumber: 40
+                                    lineNumber: 43
                                 },
                                 __self: this
                             })
@@ -59909,7 +59909,7 @@ function Login() {
                         /*#__PURE__*/ _jsxRuntime.jsx("label", {
                             __source: {
                                 fileName: "src/components/userManagement/Authentication/Login.jsx",
-                                lineNumber: 48
+                                lineNumber: 51
                             },
                             __self: this,
                             children: "Password"
@@ -59917,7 +59917,7 @@ function Login() {
                         /*#__PURE__*/ _jsxRuntime.jsx("div", {
                             __source: {
                                 fileName: "src/components/userManagement/Authentication/Login.jsx",
-                                lineNumber: 49
+                                lineNumber: 52
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx("input", {
@@ -59929,7 +59929,7 @@ function Login() {
                                 className: "form-input",
                                 __source: {
                                     fileName: "src/components/userManagement/Authentication/Login.jsx",
-                                    lineNumber: 50
+                                    lineNumber: 53
                                 },
                                 __self: this
                             })
@@ -59937,7 +59937,7 @@ function Login() {
                         /*#__PURE__*/ _jsxRuntime.jsx("div", {
                             __source: {
                                 fileName: "src/components/userManagement/Authentication/Login.jsx",
-                                lineNumber: 58
+                                lineNumber: 61
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx("button", {
@@ -59945,7 +59945,7 @@ function Login() {
                                 type: "submit",
                                 __source: {
                                     fileName: "src/components/userManagement/Authentication/Login.jsx",
-                                    lineNumber: 59
+                                    lineNumber: 62
                                 },
                                 __self: this,
                                 children: "Log In"
@@ -59995,7 +59995,7 @@ function Verify() {
    * It takes the id and token from the url and sends a get request to the server to verify the user.
    */ async function verifyUrl() {
         try {
-            const url = `http://localhost:8000/auth/verify/${param.id}/${param.token}`;
+            const url = `https://sliit-research-management.herokuapp.com/auth/verify/${param.id}/${param.token}`;
             await _axiosDefault.default.get(url);
             setIsVerify(true);
             console.log("Verified");
@@ -60094,7 +60094,7 @@ function FileUploadScreen() {
                 formData.append("fileVisibility", visibility);
                 formData.append("fileTopic", title);
                 formData.append("fileMessage", message);
-                await _axiosDefault.default.post("http://localhost:8000/api/singleFile", formData).then((res)=>{
+                await _axiosDefault.default.post("https://sliit-research-management.herokuapp.com/api/singleFile", formData).then((res)=>{
                     alert(res.data);
                     navigate("/templates/show");
                 }).catch(()=>alert("This File Format is Not Allowed!")
@@ -60113,7 +60113,7 @@ function FileUploadScreen() {
                 formData.append("fileVisibility", visibility);
                 formData.append("fileMessage", message);
                 for(let i = 0; i < multipleFile.length; i++)formData.append("files", multipleFile[i]);
-                await _axiosDefault.default.post("http://localhost:8000/api/multipleFiles", formData).then((res)=>{
+                await _axiosDefault.default.post("https://sliit-research-management.herokuapp.com/api/multipleFiles", formData).then((res)=>{
                     alert(res.data);
                     navigate("/templates/show");
                 }).catch(()=>alert("This File Format is Not Allowed!")
@@ -60129,7 +60129,7 @@ function FileUploadScreen() {
         className: "container",
         __source: {
             fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-            lineNumber: 77
+            lineNumber: 83
         },
         __self: this,
         children: [
@@ -60137,7 +60137,7 @@ function FileUploadScreen() {
                 className: "text-center mt-3",
                 __source: {
                     fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                    lineNumber: 78
+                    lineNumber: 84
                 },
                 __self: this,
                 children: "Upload Templates"
@@ -60146,7 +60146,7 @@ function FileUploadScreen() {
                 className: "card p-4 mt-4 mb-5",
                 __source: {
                     fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                    lineNumber: 79
+                    lineNumber: 85
                 },
                 __self: this,
                 children: [
@@ -60154,14 +60154,14 @@ function FileUploadScreen() {
                         className: "col align-items-center justify-content-center",
                         __source: {
                             fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                            lineNumber: 80
+                            lineNumber: 86
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                             className: "card-header",
                             __source: {
                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                lineNumber: 81
+                                lineNumber: 87
                             },
                             __self: this,
                             children: [
@@ -60169,7 +60169,7 @@ function FileUploadScreen() {
                                     className: "form-check form-check-inline align-items-center justify-content-center",
                                     __source: {
                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                        lineNumber: 82
+                                        lineNumber: 88
                                     },
                                     __self: this,
                                     children: [
@@ -60185,7 +60185,7 @@ function FileUploadScreen() {
                                             },
                                             __source: {
                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                lineNumber: 83
+                                                lineNumber: 89
                                             },
                                             __self: this
                                         }),
@@ -60194,7 +60194,7 @@ function FileUploadScreen() {
                                             htmlFor: "inlineRadio1",
                                             __source: {
                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                lineNumber: 94
+                                                lineNumber: 100
                                             },
                                             __self: this,
                                             children: "Single File"
@@ -60205,7 +60205,7 @@ function FileUploadScreen() {
                                     className: "form-check form-check-inline",
                                     __source: {
                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                        lineNumber: 98
+                                        lineNumber: 104
                                     },
                                     __self: this,
                                     children: [
@@ -60220,7 +60220,7 @@ function FileUploadScreen() {
                                             },
                                             __source: {
                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                lineNumber: 99
+                                                lineNumber: 105
                                             },
                                             __self: this
                                         }),
@@ -60229,7 +60229,7 @@ function FileUploadScreen() {
                                             htmlFor: "inlineRadio2",
                                             __source: {
                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                lineNumber: 109
+                                                lineNumber: 115
                                             },
                                             __self: this,
                                             children: "Multiple Files"
@@ -60243,27 +60243,27 @@ function FileUploadScreen() {
                         className: "row text-center mt-3",
                         __source: {
                             fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                            lineNumber: 115
+                            lineNumber: 121
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
                             className: "card-body",
                             __source: {
                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                lineNumber: 116
+                                lineNumber: 122
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
                                 className: "row mt-5",
                                 __source: {
                                     fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                    lineNumber: 117
+                                    lineNumber: 123
                                 },
                                 __self: this,
                                 children: submissionType === "singleFile" ? /*#__PURE__*/ _jsxRuntime.jsxs("form", {
                                     __source: {
                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                        lineNumber: 119
+                                        lineNumber: 125
                                     },
                                     __self: this,
                                     children: [
@@ -60271,7 +60271,7 @@ function FileUploadScreen() {
                                             className: "row",
                                             __source: {
                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                lineNumber: 120
+                                                lineNumber: 126
                                             },
                                             __self: this,
                                             children: [
@@ -60279,7 +60279,7 @@ function FileUploadScreen() {
                                                     className: "col-4",
                                                     __source: {
                                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                        lineNumber: 121
+                                                        lineNumber: 127
                                                     },
                                                     __self: this,
                                                     children: [
@@ -60287,7 +60287,7 @@ function FileUploadScreen() {
                                                             className: "form-label",
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 122
+                                                                lineNumber: 128
                                                             },
                                                             __self: this,
                                                             children: "Topic"
@@ -60301,7 +60301,7 @@ function FileUploadScreen() {
                                                             },
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 123
+                                                                lineNumber: 129
                                                             },
                                                             __self: this
                                                         })
@@ -60311,7 +60311,7 @@ function FileUploadScreen() {
                                                     className: "col-4 ",
                                                     __source: {
                                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                        lineNumber: 133
+                                                        lineNumber: 139
                                                     },
                                                     __self: this,
                                                     children: [
@@ -60319,7 +60319,7 @@ function FileUploadScreen() {
                                                             className: "form-label",
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 134
+                                                                lineNumber: 140
                                                             },
                                                             __self: this,
                                                             children: "Single File Uploader"
@@ -60333,7 +60333,7 @@ function FileUploadScreen() {
                                                             },
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 135
+                                                                lineNumber: 141
                                                             },
                                                             __self: this
                                                         })
@@ -60343,21 +60343,21 @@ function FileUploadScreen() {
                                                     className: "col mt-3",
                                                     __source: {
                                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                        lineNumber: 145
+                                                        lineNumber: 151
                                                     },
                                                     __self: this,
                                                     children: [
                                                         /*#__PURE__*/ _jsxRuntime.jsx("div", {
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 146
+                                                                lineNumber: 152
                                                             },
                                                             __self: this,
                                                             children: /*#__PURE__*/ _jsxRuntime.jsx("label", {
                                                                 className: "me-3",
                                                                 __source: {
                                                                     fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                    lineNumber: 147
+                                                                    lineNumber: 153
                                                                 },
                                                                 __self: this,
                                                                 children: "Visibility"
@@ -60374,7 +60374,7 @@ function FileUploadScreen() {
                                                             },
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 149
+                                                                lineNumber: 155
                                                             },
                                                             __self: this
                                                         }),
@@ -60383,7 +60383,7 @@ function FileUploadScreen() {
                                                             htmlFor: "inlineRadio1",
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 159
+                                                                lineNumber: 165
                                                             },
                                                             __self: this,
                                                             children: "Student"
@@ -60399,7 +60399,7 @@ function FileUploadScreen() {
                                                             },
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 166
+                                                                lineNumber: 172
                                                             },
                                                             __self: this
                                                         }),
@@ -60408,7 +60408,7 @@ function FileUploadScreen() {
                                                             htmlFor: "inlineRadio2",
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 176
+                                                                lineNumber: 182
                                                             },
                                                             __self: this,
                                                             children: "Staff Only"
@@ -60421,7 +60421,7 @@ function FileUploadScreen() {
                                             className: "mt-3",
                                             __source: {
                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                lineNumber: 185
+                                                lineNumber: 191
                                             },
                                             __self: this,
                                             children: [
@@ -60429,7 +60429,7 @@ function FileUploadScreen() {
                                                     className: "form-label",
                                                     __source: {
                                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                        lineNumber: 186
+                                                        lineNumber: 192
                                                     },
                                                     __self: this,
                                                     children: "Message"
@@ -60443,7 +60443,7 @@ function FileUploadScreen() {
                                                     },
                                                     __source: {
                                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                        lineNumber: 187
+                                                        lineNumber: 193
                                                     },
                                                     __self: this
                                                 })
@@ -60453,7 +60453,7 @@ function FileUploadScreen() {
                                             className: "m-5",
                                             __source: {
                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                lineNumber: 197
+                                                lineNumber: 203
                                             },
                                             __self: this,
                                             children: /*#__PURE__*/ _jsxRuntime.jsx("button", {
@@ -60463,7 +60463,7 @@ function FileUploadScreen() {
                                                 ,
                                                 __source: {
                                                     fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                    lineNumber: 198
+                                                    lineNumber: 204
                                                 },
                                                 __self: this,
                                                 children: "Upload"
@@ -60473,7 +60473,7 @@ function FileUploadScreen() {
                                 }) : /*#__PURE__*/ _jsxRuntime.jsxs("form", {
                                     __source: {
                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                        lineNumber: 208
+                                        lineNumber: 214
                                     },
                                     __self: this,
                                     children: [
@@ -60481,7 +60481,7 @@ function FileUploadScreen() {
                                             className: "row justify-content-center",
                                             __source: {
                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                lineNumber: 209
+                                                lineNumber: 215
                                             },
                                             __self: this,
                                             children: [
@@ -60489,7 +60489,7 @@ function FileUploadScreen() {
                                                     className: "col-4",
                                                     __source: {
                                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                        lineNumber: 210
+                                                        lineNumber: 216
                                                     },
                                                     __self: this,
                                                     children: [
@@ -60497,7 +60497,7 @@ function FileUploadScreen() {
                                                             className: "form-label",
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 211
+                                                                lineNumber: 217
                                                             },
                                                             __self: this,
                                                             children: "Title"
@@ -60513,7 +60513,7 @@ function FileUploadScreen() {
                                                             },
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 212
+                                                                lineNumber: 218
                                                             },
                                                             __self: this
                                                         })
@@ -60523,7 +60523,7 @@ function FileUploadScreen() {
                                                     className: "col-5",
                                                     __source: {
                                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                        lineNumber: 224
+                                                        lineNumber: 230
                                                     },
                                                     __self: this,
                                                     children: [
@@ -60531,7 +60531,7 @@ function FileUploadScreen() {
                                                             className: "form-label",
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 225
+                                                                lineNumber: 231
                                                             },
                                                             __self: this,
                                                             children: "Multiple Files Uploader"
@@ -60546,7 +60546,7 @@ function FileUploadScreen() {
                                                             },
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 228
+                                                                lineNumber: 234
                                                             },
                                                             __self: this
                                                         })
@@ -60556,21 +60556,21 @@ function FileUploadScreen() {
                                                     className: "col mt-3",
                                                     __source: {
                                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                        lineNumber: 239
+                                                        lineNumber: 245
                                                     },
                                                     __self: this,
                                                     children: [
                                                         /*#__PURE__*/ _jsxRuntime.jsx("div", {
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 240
+                                                                lineNumber: 246
                                                             },
                                                             __self: this,
                                                             children: /*#__PURE__*/ _jsxRuntime.jsx("label", {
                                                                 className: "me-3",
                                                                 __source: {
                                                                     fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                    lineNumber: 241
+                                                                    lineNumber: 247
                                                                 },
                                                                 __self: this,
                                                                 children: "Visibility"
@@ -60587,7 +60587,7 @@ function FileUploadScreen() {
                                                             },
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 243
+                                                                lineNumber: 249
                                                             },
                                                             __self: this
                                                         }),
@@ -60596,7 +60596,7 @@ function FileUploadScreen() {
                                                             htmlFor: "inlineRadio1",
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 253
+                                                                lineNumber: 259
                                                             },
                                                             __self: this,
                                                             children: "Student"
@@ -60612,7 +60612,7 @@ function FileUploadScreen() {
                                                             },
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 260
+                                                                lineNumber: 266
                                                             },
                                                             __self: this
                                                         }),
@@ -60621,7 +60621,7 @@ function FileUploadScreen() {
                                                             htmlFor: "inlineRadio2",
                                                             __source: {
                                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                                lineNumber: 270
+                                                                lineNumber: 276
                                                             },
                                                             __self: this,
                                                             children: "Staff Only"
@@ -60634,7 +60634,7 @@ function FileUploadScreen() {
                                             className: "mt-5 mb-4",
                                             __source: {
                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                lineNumber: 279
+                                                lineNumber: 285
                                             },
                                             __self: this,
                                             children: [
@@ -60642,7 +60642,7 @@ function FileUploadScreen() {
                                                     className: "form-label",
                                                     __source: {
                                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                        lineNumber: 280
+                                                        lineNumber: 286
                                                     },
                                                     __self: this,
                                                     children: "Message"
@@ -60656,7 +60656,7 @@ function FileUploadScreen() {
                                                     },
                                                     __source: {
                                                         fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                        lineNumber: 281
+                                                        lineNumber: 287
                                                     },
                                                     __self: this
                                                 })
@@ -60666,7 +60666,7 @@ function FileUploadScreen() {
                                             className: "m-auto",
                                             __source: {
                                                 fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                lineNumber: 291
+                                                lineNumber: 297
                                             },
                                             __self: this,
                                             children: /*#__PURE__*/ _jsxRuntime.jsx("button", {
@@ -60676,7 +60676,7 @@ function FileUploadScreen() {
                                                 ,
                                                 __source: {
                                                     fileName: "src/components/projectManagement/templates/fileUploadScreen.jsx",
-                                                    lineNumber: 292
+                                                    lineNumber: 298
                                                 },
                                                 __self: this,
                                                 children: "Upload"
@@ -60863,7 +60863,7 @@ function SingleFileScreen() {
     _react.useEffect(()=>{
         async function getSingleFileData() {
             try {
-                await _axiosDefault.default.get("http://localhost:8000/api/getAllSingleFiles/").then((res)=>{
+                await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/api/getAllSingleFiles/").then((res)=>{
                     if (res.status === 200) {
                         setDataList(res.data);
                         console.log(res.data);
@@ -60879,7 +60879,7 @@ function SingleFileScreen() {
     }, []);
     async function deleteSingleTemplates(details) {
         try {
-            if (window.confirm("This File Will Be Deleted!")) await _axiosDefault.default.delete(`http://localhost:8000/api/singleFile/delete/${details._id}`).then((res)=>{
+            if (window.confirm("This File Will Be Deleted!")) await _axiosDefault.default.delete(`https://sliit-research-management.herokuapp.com/api/singleFile/delete/${details._id}`).then((res)=>{
                 console.log(res);
                 if (res.status === 200) {
                     alert(res.data);
@@ -60895,7 +60895,7 @@ function SingleFileScreen() {
         className: "position-absolute top-50 start-50 translate-middle",
         __source: {
             fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-            lineNumber: 51
+            lineNumber: 55
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
@@ -60903,14 +60903,14 @@ function SingleFileScreen() {
             role: "status",
             __source: {
                 fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                lineNumber: 52
+                lineNumber: 56
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx("span", {
                 className: "visually-hidden",
                 __source: {
                     fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                    lineNumber: 53
+                    lineNumber: 57
                 },
                 __self: this,
                 children: "Loading..."
@@ -60921,14 +60921,14 @@ function SingleFileScreen() {
         if (loggedIn === "Staff" || loggedIn === "Admin") return(/*#__PURE__*/ _jsxRuntime.jsxs("tr", {
             __source: {
                 fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                lineNumber: 61
+                lineNumber: 65
             },
             __self: this,
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                        lineNumber: 62
+                        lineNumber: 66
                     },
                     __self: this,
                     children: item.fileTopic
@@ -60936,18 +60936,18 @@ function SingleFileScreen() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                        lineNumber: 63
+                        lineNumber: 67
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("a", {
-                        href: `http://localhost:8000/${item.filePath}`,
+                        href: `https://sliit-research-management.herokuapp.com/${item.filePath}`,
                         download: ``,
                         style: {
                             textDecoration: "none"
                         },
                         __source: {
                             fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                            lineNumber: 64
+                            lineNumber: 68
                         },
                         __self: this,
                         children: item.fileName
@@ -60956,7 +60956,7 @@ function SingleFileScreen() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                        lineNumber: 72
+                        lineNumber: 76
                     },
                     __self: this,
                     children: item.fileMessage
@@ -60964,7 +60964,7 @@ function SingleFileScreen() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                        lineNumber: 73
+                        lineNumber: 77
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("button", {
@@ -60972,7 +60972,7 @@ function SingleFileScreen() {
                         onClick: deleteSingleTemplates.bind(this, item),
                         __source: {
                             fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                            lineNumber: 74
+                            lineNumber: 78
                         },
                         __self: this,
                         children: "Delete"
@@ -60983,14 +60983,14 @@ function SingleFileScreen() {
         if (item.fileVisibility === "Both" && loggedIn === "Student") return(/*#__PURE__*/ _jsxRuntime.jsxs("tr", {
             __source: {
                 fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                lineNumber: 86
+                lineNumber: 90
             },
             __self: this,
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                        lineNumber: 87
+                        lineNumber: 91
                     },
                     __self: this,
                     children: item.fileTopic
@@ -60998,18 +60998,18 @@ function SingleFileScreen() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                        lineNumber: 88
+                        lineNumber: 92
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("a", {
-                        href: `http://localhost:8000/${item.filePath}`,
+                        href: `https://sliit-research-management.herokuapp.com/${item.filePath}`,
                         download: ``,
                         style: {
                             textDecoration: "none"
                         },
                         __source: {
                             fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                            lineNumber: 89
+                            lineNumber: 93
                         },
                         __self: this,
                         children: item.fileName
@@ -61018,7 +61018,7 @@ function SingleFileScreen() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                        lineNumber: 97
+                        lineNumber: 101
                     },
                     __self: this,
                     children: item.fileMessage
@@ -61030,20 +61030,20 @@ function SingleFileScreen() {
         className: "container px-4",
         __source: {
             fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-            lineNumber: 105
+            lineNumber: 109
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsx("table", {
             className: "table table-bordered",
             __source: {
                 fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                lineNumber: 106
+                lineNumber: 110
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx("tbody", {
                 __source: {
                     fileName: "src/components/projectManagement/templates/singleFileScreen.jsx",
-                    lineNumber: 107
+                    lineNumber: 111
                 },
                 __self: this,
                 children: fileList
@@ -61088,7 +61088,7 @@ function MultipleFileScreen() {
     _react.useEffect(()=>{
         async function getMultipleFileData() {
             try {
-                await _axiosDefault.default.get("http://localhost:8000/api/getAllMultipleFiles/").then((res)=>{
+                await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/api/getAllMultipleFiles/").then((res)=>{
                     if (res.status === 200) {
                         setDataList(res.data);
                         console.log(dataList);
@@ -61104,7 +61104,7 @@ function MultipleFileScreen() {
     }, []);
     async function deleteMultipleTemplates(details) {
         try {
-            if (window.confirm("This File Will Be Deleted!")) await _axiosDefault.default.delete(`http://localhost:8000/api/multipleFiles/delete/${details._id}`).then((res)=>{
+            if (window.confirm("This File Will Be Deleted!")) await _axiosDefault.default.delete(`https://sliit-research-management.herokuapp.com/api/multipleFiles/delete/${details._id}`).then((res)=>{
                 console.log(res);
                 if (res.status === 200) {
                     alert(res.data);
@@ -61120,7 +61120,7 @@ function MultipleFileScreen() {
         className: "position-absolute top-50 start-50 translate-middle",
         __source: {
             fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-            lineNumber: 54
+            lineNumber: 56
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
@@ -61128,14 +61128,14 @@ function MultipleFileScreen() {
             role: "status",
             __source: {
                 fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                lineNumber: 55
+                lineNumber: 57
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx("span", {
                 className: "visually-hidden",
                 __source: {
                     fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                    lineNumber: 56
+                    lineNumber: 58
                 },
                 __self: this,
                 children: "Loading..."
@@ -61146,14 +61146,14 @@ function MultipleFileScreen() {
         if (loggedIn === "Staff" || loggedIn === "Admin") return(/*#__PURE__*/ _jsxRuntime.jsxs("tr", {
             __source: {
                 fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                lineNumber: 64
+                lineNumber: 66
             },
             __self: this,
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                        lineNumber: 65
+                        lineNumber: 67
                     },
                     __self: this,
                     children: item.title
@@ -61161,22 +61161,22 @@ function MultipleFileScreen() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                        lineNumber: 66
+                        lineNumber: 68
                     },
                     __self: this,
                     children: item.files.map((file, index1)=>/*#__PURE__*/ _jsxRuntime.jsx("div", {
                             className: "col-10",
                             __source: {
                                 fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                                lineNumber: 68
+                                lineNumber: 70
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx("a", {
-                                href: `http://localhost:8000/${file.filePath}`,
+                                href: `https://sliit-research-management.herokuapp.com/${file.filePath}`,
                                 download: ``,
                                 __source: {
                                     fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                                    lineNumber: 69
+                                    lineNumber: 71
                                 },
                                 __self: this,
                                 children: file.fileName
@@ -61187,7 +61187,7 @@ function MultipleFileScreen() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                        lineNumber: 78
+                        lineNumber: 80
                     },
                     __self: this,
                     children: item.fileMessage
@@ -61195,7 +61195,7 @@ function MultipleFileScreen() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                        lineNumber: 79
+                        lineNumber: 81
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("button", {
@@ -61203,7 +61203,7 @@ function MultipleFileScreen() {
                         onClick: deleteMultipleTemplates.bind(this, item),
                         __source: {
                             fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                            lineNumber: 80
+                            lineNumber: 82
                         },
                         __self: this,
                         children: "Delete"
@@ -61214,14 +61214,14 @@ function MultipleFileScreen() {
         if (item.fileVisibility === "Both" && loggedIn === "Student") return(/*#__PURE__*/ _jsxRuntime.jsxs("tr", {
             __source: {
                 fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                lineNumber: 92
+                lineNumber: 94
             },
             __self: this,
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                        lineNumber: 93
+                        lineNumber: 95
                     },
                     __self: this,
                     children: item.title
@@ -61229,22 +61229,22 @@ function MultipleFileScreen() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                        lineNumber: 94
+                        lineNumber: 96
                     },
                     __self: this,
                     children: item.files.map((file, index1)=>/*#__PURE__*/ _jsxRuntime.jsx("div", {
                             className: "col-10",
                             __source: {
                                 fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                                lineNumber: 96
+                                lineNumber: 98
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx("a", {
-                                href: `http://localhost:8000/${file.filePath}`,
+                                href: `https://sliit-research-management.herokuapp.com/${file.filePath}`,
                                 download: ``,
                                 __source: {
                                     fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                                    lineNumber: 97
+                                    lineNumber: 99
                                 },
                                 __self: this,
                                 children: file.fileName
@@ -61255,7 +61255,7 @@ function MultipleFileScreen() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                        lineNumber: 106
+                        lineNumber: 108
                     },
                     __self: this,
                     children: item.fileMessage
@@ -61267,20 +61267,20 @@ function MultipleFileScreen() {
         className: "container px-4",
         __source: {
             fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-            lineNumber: 114
+            lineNumber: 116
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsx("table", {
             className: "table table-bordered",
             __source: {
                 fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                lineNumber: 115
+                lineNumber: 117
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx("tbody", {
                 __source: {
                     fileName: "src/components/projectManagement/templates/multipleFileScreen.jsx",
-                    lineNumber: 116
+                    lineNumber: 118
                 },
                 __self: this,
                 children: fileList
@@ -61324,10 +61324,10 @@ function ResearchTopicAdd() {
     _react.useEffect(()=>{
         try {
             async function getData() {
-                await _axiosDefault.default.get("http://localhost:8000/chat/find-group").then((res)=>{
+                await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/chat/find-group").then((res)=>{
                     setGroup(res.data);
                     setGroupId(res.data.gid);
-                    _axiosDefault.default.get(`http://localhost:8000/research-topic/details/${res.data._id}`).then((res1)=>{
+                    _axiosDefault.default.get(`https://sliit-research-management.herokuapp.com/research-topic/details/${res.data._id}`).then((res1)=>{
                         setDetails(res1.data);
                         setResearchTopic(res1.data.researchTopic);
                         setStatus(res1.data.status);
@@ -61346,7 +61346,7 @@ function ResearchTopicAdd() {
                 status: "Pending",
                 feedBack: feedBack
             };
-            await _axiosDefault.default.put(`http://localhost:8000/research-topic/update/${details._id}`, data).then((res)=>{
+            await _axiosDefault.default.put(`https://sliit-research-management.herokuapp.com/research-topic/update/${details._id}`, data).then((res)=>{
                 if (res.status === 200) {
                     alert(res.data);
                     window.location.reload();
@@ -61362,7 +61362,7 @@ function ResearchTopicAdd() {
                 status: status,
                 feedBack: feedBack
             };
-            await _axiosDefault.default.post("http://localhost:8000/research-topic/save", data).then((res)=>{
+            await _axiosDefault.default.post("https://sliit-research-management.herokuapp.com/research-topic/save", data).then((res)=>{
                 if (res.status === 200) {
                     alert(res.data);
                     window.location.reload();
@@ -61376,21 +61376,21 @@ function ResearchTopicAdd() {
     return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
         __source: {
             fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-            lineNumber: 79
+            lineNumber: 89
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "container",
             __source: {
                 fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                lineNumber: 80
+                lineNumber: 90
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 className: "card mt-5",
                 __source: {
                     fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                    lineNumber: 81
+                    lineNumber: 91
                 },
                 __self: this,
                 children: [
@@ -61398,13 +61398,13 @@ function ResearchTopicAdd() {
                         className: "card-header",
                         __source: {
                             fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                            lineNumber: 82
+                            lineNumber: 92
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx("h3", {
                             __source: {
                                 fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                lineNumber: 83
+                                lineNumber: 93
                             },
                             __self: this,
                             children: "Topic Submission"
@@ -61414,7 +61414,7 @@ function ResearchTopicAdd() {
                         className: "card-body",
                         __source: {
                             fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                            lineNumber: 85
+                            lineNumber: 95
                         },
                         __self: this,
                         children: [
@@ -61422,7 +61422,7 @@ function ResearchTopicAdd() {
                                 className: "mb-3 row",
                                 __source: {
                                     fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                    lineNumber: 86
+                                    lineNumber: 96
                                 },
                                 __self: this,
                                 children: [
@@ -61430,7 +61430,7 @@ function ResearchTopicAdd() {
                                         className: "col-sm-2 col-form-label",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                            lineNumber: 87
+                                            lineNumber: 97
                                         },
                                         __self: this,
                                         children: "Group Id"
@@ -61439,7 +61439,7 @@ function ResearchTopicAdd() {
                                         className: "col-sm-5",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                            lineNumber: 88
+                                            lineNumber: 98
                                         },
                                         __self: this,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx("input", {
@@ -61449,7 +61449,7 @@ function ResearchTopicAdd() {
                                             value: groupId,
                                             __source: {
                                                 fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                                lineNumber: 89
+                                                lineNumber: 99
                                             },
                                             __self: this
                                         })
@@ -61460,7 +61460,7 @@ function ResearchTopicAdd() {
                                 className: "mb-3 row",
                                 __source: {
                                     fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                    lineNumber: 98
+                                    lineNumber: 108
                                 },
                                 __self: this,
                                 children: [
@@ -61468,7 +61468,7 @@ function ResearchTopicAdd() {
                                         className: "col-sm-2 col-form-label",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                            lineNumber: 99
+                                            lineNumber: 109
                                         },
                                         __self: this,
                                         children: "Topic"
@@ -61477,7 +61477,7 @@ function ResearchTopicAdd() {
                                         className: "col-sm-5",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                            lineNumber: 100
+                                            lineNumber: 110
                                         },
                                         __self: this,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx("input", {
@@ -61489,7 +61489,7 @@ function ResearchTopicAdd() {
                                             },
                                             __source: {
                                                 fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                                lineNumber: 101
+                                                lineNumber: 111
                                             },
                                             __self: this
                                         })
@@ -61499,7 +61499,7 @@ function ResearchTopicAdd() {
                                 className: "mb-3 row",
                                 __source: {
                                     fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                    lineNumber: 112
+                                    lineNumber: 122
                                 },
                                 __self: this,
                                 children: [
@@ -61507,7 +61507,7 @@ function ResearchTopicAdd() {
                                         className: "col-sm-2 col-form-label",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                            lineNumber: 113
+                                            lineNumber: 123
                                         },
                                         __self: this,
                                         children: "Topic"
@@ -61516,7 +61516,7 @@ function ResearchTopicAdd() {
                                         className: "col-sm-5",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                            lineNumber: 114
+                                            lineNumber: 124
                                         },
                                         __self: this,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx("input", {
@@ -61529,7 +61529,7 @@ function ResearchTopicAdd() {
                                             },
                                             __source: {
                                                 fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                                lineNumber: 115
+                                                lineNumber: 125
                                             },
                                             __self: this
                                         })
@@ -61542,7 +61542,7 @@ function ResearchTopicAdd() {
                                         className: "mb-3 row",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                            lineNumber: 130
+                                            lineNumber: 140
                                         },
                                         __self: this,
                                         children: [
@@ -61550,7 +61550,7 @@ function ResearchTopicAdd() {
                                                 className: "col-sm-2 col-form-label",
                                                 __source: {
                                                     fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                                    lineNumber: 131
+                                                    lineNumber: 141
                                                 },
                                                 __self: this,
                                                 children: "Status"
@@ -61559,7 +61559,7 @@ function ResearchTopicAdd() {
                                                 className: "col-sm-5",
                                                 __source: {
                                                     fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                                    lineNumber: 132
+                                                    lineNumber: 142
                                                 },
                                                 __self: this,
                                                 children: /*#__PURE__*/ _jsxRuntime.jsx("input", {
@@ -61571,7 +61571,7 @@ function ResearchTopicAdd() {
                                                     value: status,
                                                     __source: {
                                                         fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                                        lineNumber: 133
+                                                        lineNumber: 143
                                                     },
                                                     __self: this
                                                 })
@@ -61582,7 +61582,7 @@ function ResearchTopicAdd() {
                                         className: "mb-3 row",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                            lineNumber: 143
+                                            lineNumber: 153
                                         },
                                         __self: this,
                                         children: [
@@ -61590,7 +61590,7 @@ function ResearchTopicAdd() {
                                                 className: "col-sm-2 col-form-label",
                                                 __source: {
                                                     fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                                    lineNumber: 144
+                                                    lineNumber: 154
                                                 },
                                                 __self: this,
                                                 children: "FeedBack"
@@ -61599,7 +61599,7 @@ function ResearchTopicAdd() {
                                                 className: "col-sm-5",
                                                 __source: {
                                                     fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                                    lineNumber: 145
+                                                    lineNumber: 155
                                                 },
                                                 __self: this,
                                                 children: /*#__PURE__*/ _jsxRuntime.jsx("input", {
@@ -61611,7 +61611,7 @@ function ResearchTopicAdd() {
                                                     value: feedBack,
                                                     __source: {
                                                         fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                                        lineNumber: 146
+                                                        lineNumber: 156
                                                     },
                                                     __self: this
                                                 })
@@ -61626,7 +61626,7 @@ function ResearchTopicAdd() {
                         className: "m-auto mb-3",
                         __source: {
                             fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                            lineNumber: 163
+                            lineNumber: 173
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx("button", {
@@ -61636,7 +61636,7 @@ function ResearchTopicAdd() {
                             ,
                             __source: {
                                 fileName: "src/components/projectManagement/researchTopic/researchTopicAdd.jsx",
-                                lineNumber: 164
+                                lineNumber: 174
                             },
                             __self: this,
                             children: "Submit"
@@ -61680,7 +61680,7 @@ function ResearchTopicView() {
     _react.useEffect(()=>{
         async function getAllData() {
             try {
-                await _axiosDefault.default.get("http://localhost:8000/research-topic/").then((res)=>{
+                await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/research-topic/").then((res)=>{
                     if (res.status === 200) setDetails(res.data.details);
                 });
             } catch (error) {
@@ -61699,14 +61699,14 @@ function ResearchTopicView() {
         return(/*#__PURE__*/ _jsxRuntime.jsxs("tr", {
             __source: {
                 fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                lineNumber: 31
+                lineNumber: 35
             },
             __self: this,
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                        lineNumber: 32
+                        lineNumber: 36
                     },
                     __self: this,
                     children: item.groupId.gid
@@ -61714,7 +61714,7 @@ function ResearchTopicView() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                        lineNumber: 33
+                        lineNumber: 37
                     },
                     __self: this,
                     children: item.researchTopic
@@ -61722,7 +61722,7 @@ function ResearchTopicView() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                        lineNumber: 34
+                        lineNumber: 38
                     },
                     __self: this,
                     children: item.status
@@ -61730,7 +61730,7 @@ function ResearchTopicView() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                        lineNumber: 35
+                        lineNumber: 39
                     },
                     __self: this,
                     children: item.feedBack
@@ -61738,7 +61738,7 @@ function ResearchTopicView() {
                 /*#__PURE__*/ _jsxRuntime.jsx("td", {
                     __source: {
                         fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                        lineNumber: 36
+                        lineNumber: 40
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("button", {
@@ -61746,7 +61746,7 @@ function ResearchTopicView() {
                         onClick: editResearchTopicStatus.bind(this, item),
                         __source: {
                             fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                            lineNumber: 37
+                            lineNumber: 41
                         },
                         __self: this,
                         children: "Edit"
@@ -61759,14 +61759,14 @@ function ResearchTopicView() {
         className: "container px-4",
         __source: {
             fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-            lineNumber: 44
+            lineNumber: 53
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsxs("div", {
             className: "card mt-5",
             __source: {
                 fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                lineNumber: 45
+                lineNumber: 54
             },
             __self: this,
             children: [
@@ -61774,13 +61774,13 @@ function ResearchTopicView() {
                     className: "card-header",
                     __source: {
                         fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                        lineNumber: 46
+                        lineNumber: 55
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("h3", {
                         __source: {
                             fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                            lineNumber: 47
+                            lineNumber: 56
                         },
                         __self: this,
                         children: "Research Topic Submissions"
@@ -61790,34 +61790,34 @@ function ResearchTopicView() {
                     className: "card-body",
                     __source: {
                         fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                        lineNumber: 49
+                        lineNumber: 58
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs("table", {
                         className: "table table-bordered",
                         __source: {
                             fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                            lineNumber: 50
+                            lineNumber: 59
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx("thead", {
                                 __source: {
                                     fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                                    lineNumber: 51
+                                    lineNumber: 60
                                 },
                                 __self: this,
                                 children: /*#__PURE__*/ _jsxRuntime.jsxs("tr", {
                                     __source: {
                                         fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                                        lineNumber: 52
+                                        lineNumber: 61
                                     },
                                     __self: this,
                                     children: [
                                         /*#__PURE__*/ _jsxRuntime.jsx("td", {
                                             __source: {
                                                 fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                                                lineNumber: 53
+                                                lineNumber: 62
                                             },
                                             __self: this,
                                             children: "Group Id"
@@ -61825,7 +61825,7 @@ function ResearchTopicView() {
                                         /*#__PURE__*/ _jsxRuntime.jsx("td", {
                                             __source: {
                                                 fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                                                lineNumber: 54
+                                                lineNumber: 63
                                             },
                                             __self: this,
                                             children: "Research topic"
@@ -61833,7 +61833,7 @@ function ResearchTopicView() {
                                         /*#__PURE__*/ _jsxRuntime.jsx("td", {
                                             __source: {
                                                 fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                                                lineNumber: 55
+                                                lineNumber: 64
                                             },
                                             __self: this,
                                             children: "Status"
@@ -61841,7 +61841,7 @@ function ResearchTopicView() {
                                         /*#__PURE__*/ _jsxRuntime.jsx("td", {
                                             __source: {
                                                 fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                                                lineNumber: 56
+                                                lineNumber: 65
                                             },
                                             __self: this,
                                             children: "FeedBack"
@@ -61852,7 +61852,7 @@ function ResearchTopicView() {
                             /*#__PURE__*/ _jsxRuntime.jsx("tbody", {
                                 __source: {
                                     fileName: "src/components/projectManagement/researchTopic/researchTopicView.jsx",
-                                    lineNumber: 59
+                                    lineNumber: 68
                                 },
                                 __self: this,
                                 children: dataList
@@ -61903,7 +61903,7 @@ function ResearchTopicEdit() {
     console.log("status", status);
     _react.useEffect(()=>{
         async function getData() {
-            await _axiosDefault.default.get("http://localhost:8000/chat/find-group").then((res)=>{
+            await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/chat/find-group").then((res)=>{
                 setGroupId(res.data.gid);
             });
         }
@@ -61916,7 +61916,7 @@ function ResearchTopicEdit() {
                 status: status,
                 feedBack: feedBack
             };
-            await _axiosDefault.default.put(`http://localhost:8000/research-topic/update/${state._id}`, data).then((res)=>{
+            await _axiosDefault.default.put(`https://sliit-research-management.herokuapp.com/research-topic/update/${state._id}`, data).then((res)=>{
                 if (res.status === 200) {
                     alert(res.data);
                     navigate("/researchTopic/view");
@@ -61929,21 +61929,21 @@ function ResearchTopicEdit() {
     return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
         __source: {
             fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-            lineNumber: 44
+            lineNumber: 49
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "container",
             __source: {
                 fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                lineNumber: 45
+                lineNumber: 50
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 className: "card mt-5",
                 __source: {
                     fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                    lineNumber: 46
+                    lineNumber: 51
                 },
                 __self: this,
                 children: [
@@ -61951,13 +61951,13 @@ function ResearchTopicEdit() {
                         className: "card-header",
                         __source: {
                             fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                            lineNumber: 47
+                            lineNumber: 52
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx("h3", {
                             __source: {
                                 fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                lineNumber: 48
+                                lineNumber: 53
                             },
                             __self: this,
                             children: "Edit Research Topic"
@@ -61967,7 +61967,7 @@ function ResearchTopicEdit() {
                         className: "card-body",
                         __source: {
                             fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                            lineNumber: 50
+                            lineNumber: 55
                         },
                         __self: this,
                         children: [
@@ -61975,7 +61975,7 @@ function ResearchTopicEdit() {
                                 className: "mb-3 row",
                                 __source: {
                                     fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                    lineNumber: 51
+                                    lineNumber: 56
                                 },
                                 __self: this,
                                 children: [
@@ -61983,7 +61983,7 @@ function ResearchTopicEdit() {
                                         className: "col-sm-2 col-form-label",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                            lineNumber: 52
+                                            lineNumber: 57
                                         },
                                         __self: this,
                                         children: "Group Id"
@@ -61992,7 +61992,7 @@ function ResearchTopicEdit() {
                                         className: "col-sm-5",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                            lineNumber: 53
+                                            lineNumber: 58
                                         },
                                         __self: this,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx("input", {
@@ -62002,7 +62002,7 @@ function ResearchTopicEdit() {
                                             value: groupId,
                                             __source: {
                                                 fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                                lineNumber: 54
+                                                lineNumber: 59
                                             },
                                             __self: this
                                         })
@@ -62013,7 +62013,7 @@ function ResearchTopicEdit() {
                                 className: "mb-3 row",
                                 __source: {
                                     fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                    lineNumber: 63
+                                    lineNumber: 68
                                 },
                                 __self: this,
                                 children: [
@@ -62021,7 +62021,7 @@ function ResearchTopicEdit() {
                                         className: "col-sm-2 col-form-label",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                            lineNumber: 64
+                                            lineNumber: 69
                                         },
                                         __self: this,
                                         children: "Topic"
@@ -62030,7 +62030,7 @@ function ResearchTopicEdit() {
                                         className: "col-sm-5",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                            lineNumber: 65
+                                            lineNumber: 70
                                         },
                                         __self: this,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx("input", {
@@ -62043,7 +62043,7 @@ function ResearchTopicEdit() {
                                             },
                                             __source: {
                                                 fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                                lineNumber: 66
+                                                lineNumber: 71
                                             },
                                             __self: this
                                         })
@@ -62054,7 +62054,7 @@ function ResearchTopicEdit() {
                                 className: "mb-3 row",
                                 __source: {
                                     fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                    lineNumber: 78
+                                    lineNumber: 83
                                 },
                                 __self: this,
                                 children: [
@@ -62062,7 +62062,7 @@ function ResearchTopicEdit() {
                                         className: "col-sm-2 col-form-label",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                            lineNumber: 79
+                                            lineNumber: 84
                                         },
                                         __self: this,
                                         children: "Status"
@@ -62071,7 +62071,7 @@ function ResearchTopicEdit() {
                                         className: "col-sm-5",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                            lineNumber: 80
+                                            lineNumber: 85
                                         },
                                         __self: this,
                                         children: /*#__PURE__*/ _jsxRuntime.jsxs("select", {
@@ -62087,7 +62087,7 @@ function ResearchTopicEdit() {
                                             ,
                                             __source: {
                                                 fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                                lineNumber: 81
+                                                lineNumber: 86
                                             },
                                             __self: this,
                                             children: [
@@ -62095,7 +62095,7 @@ function ResearchTopicEdit() {
                                                     label: "Status Types",
                                                     __source: {
                                                         fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                                        lineNumber: 92
+                                                        lineNumber: 97
                                                     },
                                                     __self: this
                                                 }),
@@ -62103,7 +62103,7 @@ function ResearchTopicEdit() {
                                                     value: "",
                                                     __source: {
                                                         fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                                        lineNumber: 93
+                                                        lineNumber: 98
                                                     },
                                                     __self: this
                                                 }),
@@ -62111,7 +62111,7 @@ function ResearchTopicEdit() {
                                                     value: "Pending",
                                                     __source: {
                                                         fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                                        lineNumber: 94
+                                                        lineNumber: 99
                                                     },
                                                     __self: this,
                                                     children: "Pending"
@@ -62120,7 +62120,7 @@ function ResearchTopicEdit() {
                                                     value: "Accepted",
                                                     __source: {
                                                         fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                                        lineNumber: 95
+                                                        lineNumber: 100
                                                     },
                                                     __self: this,
                                                     children: "Accepted"
@@ -62129,7 +62129,7 @@ function ResearchTopicEdit() {
                                                     value: "Rejected",
                                                     __source: {
                                                         fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                                        lineNumber: 96
+                                                        lineNumber: 101
                                                     },
                                                     __self: this,
                                                     children: "Rejected"
@@ -62143,7 +62143,7 @@ function ResearchTopicEdit() {
                                 className: "mb-3 row",
                                 __source: {
                                     fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                    lineNumber: 101
+                                    lineNumber: 106
                                 },
                                 __self: this,
                                 children: [
@@ -62151,7 +62151,7 @@ function ResearchTopicEdit() {
                                         className: "col-sm-2 col-form-label",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                            lineNumber: 102
+                                            lineNumber: 107
                                         },
                                         __self: this,
                                         children: "FeedBack"
@@ -62160,7 +62160,7 @@ function ResearchTopicEdit() {
                                         className: "col-sm-5",
                                         __source: {
                                             fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                            lineNumber: 103
+                                            lineNumber: 108
                                         },
                                         __self: this,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx("textarea", {
@@ -62172,7 +62172,7 @@ function ResearchTopicEdit() {
                                             },
                                             __source: {
                                                 fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                                lineNumber: 104
+                                                lineNumber: 109
                                             },
                                             __self: this
                                         })
@@ -62185,7 +62185,7 @@ function ResearchTopicEdit() {
                         className: "m-auto mb-3",
                         __source: {
                             fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                            lineNumber: 115
+                            lineNumber: 120
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx("button", {
@@ -62195,7 +62195,7 @@ function ResearchTopicEdit() {
                             ,
                             __source: {
                                 fileName: "src/components/projectManagement/researchTopic/researchTopicEdit.jsx",
-                                lineNumber: 116
+                                lineNumber: 121
                             },
                             __self: this,
                             children: "Edit"
@@ -62240,7 +62240,7 @@ function ReqSupervisor() {
     const [supervisorId, setSupervisorId] = _react.useState(0);
     const [groupId, setGroupId] = _react.useState(0);
     _react.useEffect(()=>{
-        _axiosDefault.default.get("http://localhost:8000/groups/supervisor").then((res)=>{
+        _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/groups/supervisor").then((res)=>{
             setSupervisors(res.data.staff);
         }).catch((err)=>{
             console.log(err);
@@ -62250,33 +62250,33 @@ function ReqSupervisor() {
         className: "main",
         __source: {
             fileName: "src/components/groupsManagement/requestSup.js",
-            lineNumber: 22
+            lineNumber: 21
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "sub-main",
             __source: {
                 fileName: "src/components/groupsManagement/requestSup.js",
-                lineNumber: 23
+                lineNumber: 22
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/groupsManagement/requestSup.js",
-                    lineNumber: 24
+                    lineNumber: 23
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                     __source: {
                         fileName: "src/components/groupsManagement/requestSup.js",
-                        lineNumber: 25
+                        lineNumber: 24
                     },
                     __self: this,
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                             __source: {
                                 fileName: "src/components/groupsManagement/requestSup.js",
-                                lineNumber: 26
+                                lineNumber: 25
                             },
                             __self: this,
                             children: "Request Supervisor"
@@ -62284,7 +62284,7 @@ function ReqSupervisor() {
                         /*#__PURE__*/ _jsxRuntime.jsxs("form", {
                             __source: {
                                 fileName: "src/components/groupsManagement/requestSup.js",
-                                lineNumber: 28
+                                lineNumber: 27
                             },
                             __self: this,
                             children: [
@@ -62292,7 +62292,7 @@ function ReqSupervisor() {
                                     class: "form-group",
                                     __source: {
                                         fileName: "src/components/groupsManagement/requestSup.js",
-                                        lineNumber: 29
+                                        lineNumber: 28
                                     },
                                     __self: this,
                                     children: [
@@ -62300,7 +62300,7 @@ function ReqSupervisor() {
                                             for: "text1",
                                             __source: {
                                                 fileName: "src/components/groupsManagement/requestSup.js",
-                                                lineNumber: 30
+                                                lineNumber: 29
                                             },
                                             __self: this,
                                             children: "Select Supervisor"
@@ -62326,7 +62326,7 @@ function ReqSupervisor() {
                                                     value: "0",
                                                     __source: {
                                                         fileName: "src/components/groupsManagement/requestSup.js",
-                                                        lineNumber: 33
+                                                        lineNumber: 36
                                                     },
                                                     __self: this,
                                                     children: "Select Supervisor"
@@ -62335,7 +62335,7 @@ function ReqSupervisor() {
                                                         value: supervisor.id,
                                                         __source: {
                                                             fileName: "src/components/groupsManagement/requestSup.js",
-                                                            lineNumber: 36
+                                                            lineNumber: 39
                                                         },
                                                         __self: this,
                                                         children: [
@@ -62351,7 +62351,7 @@ function ReqSupervisor() {
                                 /*#__PURE__*/ _jsxRuntime.jsx("hr", {
                                     __source: {
                                         fileName: "src/components/groupsManagement/requestSup.js",
-                                        lineNumber: 42
+                                        lineNumber: 46
                                     },
                                     __self: this
                                 }),
@@ -62359,7 +62359,7 @@ function ReqSupervisor() {
                                     class: "form-group",
                                     __source: {
                                         fileName: "src/components/groupsManagement/requestSup.js",
-                                        lineNumber: 43
+                                        lineNumber: 47
                                     },
                                     __self: this,
                                     children: [
@@ -62367,7 +62367,7 @@ function ReqSupervisor() {
                                             for: "text2",
                                             __source: {
                                                 fileName: "src/components/groupsManagement/requestSup.js",
-                                                lineNumber: 44
+                                                lineNumber: 48
                                             },
                                             __self: this,
                                             children: "Group ID"
@@ -62380,7 +62380,7 @@ function ReqSupervisor() {
                                             ,
                                             __source: {
                                                 fileName: "src/components/groupsManagement/requestSup.js",
-                                                lineNumber: 45
+                                                lineNumber: 49
                                             },
                                             __self: this
                                         })
@@ -62397,7 +62397,7 @@ function ReqSupervisor() {
                                         type: "button",
                                         class: "button",
                                         onClick: ()=>{
-                                            _axiosDefault.default.post("http://localhost:8000/groups/supervisor/request/topic", {
+                                            _axiosDefault.default.post("https://sliit-research-management.herokuapp.com/groups/supervisor/request/topic", {
                                                 supervisorid: supervisorId,
                                                 groupid: groupId
                                             }).then((res)=>{

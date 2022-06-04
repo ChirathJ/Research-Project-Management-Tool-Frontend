@@ -10,7 +10,9 @@ function LogOut() {
    */
   async function logOut() {
     try {
-      await axios.get("http://localhost:8000/auth/logout");
+      await axios.get(
+        "https://sliit-research-management.herokuapp.com/auth/logout"
+      );
 
       navigate("/");
     } catch (err) {

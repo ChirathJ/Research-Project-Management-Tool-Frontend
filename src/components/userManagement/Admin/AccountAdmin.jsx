@@ -30,7 +30,7 @@ function AccountAdmin() {
           data,
         }
       );
-      navigate("/staffs");
+      navigate("/admins");
     } catch (err) {
       console.log(err);
     }

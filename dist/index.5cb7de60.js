@@ -47517,7 +47517,7 @@ function AccountAdmin() {
             await _axiosDefault.default.delete("https://sliit-research-management.herokuapp.com/admin/delete", {
                 data
             });
-            navigate("/staffs");
+            navigate("/admins");
         } catch (err) {
             console.log(err);
         }
@@ -47695,7 +47695,7 @@ var _reactBootstrap = require("react-bootstrap");
 var _loginContext = require("../userManagement/context/LoginContext");
 var _loginContextDefault = parcelHelpers.interopDefault(_loginContext);
 var _s = $RefreshSig$();
-const socket = _socketIoClientDefault.default.connect("https://sliit-research-management.herokuapp.com");
+const socket = _socketIoClientDefault.default.connect("http://localhost:8000");
 function ChatHandler() {
     _s();
     const { loggedIn  } = _react.useContext(_loginContextDefault.default);
@@ -47718,12 +47718,13 @@ function ChatHandler() {
    * It gets the username and group from the database and sets the state of the username and group.
    */ async function getData() {
         try {
-            const result = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/account/");
+            const result = await _axiosDefault.default.get("http://localhost:8000/account/");
             if (loggedIn === "Student") {
-                const group1 = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/chat/find-group");
-                setGroup(group1.data.allgroups);
+                const group1 = await _axiosDefault.default.get("http://localhost:8000/chat/find-group");
+                console.log(group1);
+                setGroup(group1.data);
             } else {
-                const group1 = await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/groups/");
+                const group1 = await _axiosDefault.default.get("http://localhost:8000/groups/");
                 setGroup(group1.data.allgroups);
             }
             setUsername(result.data.name);
@@ -47740,14 +47741,14 @@ function ChatHandler() {
             return(/*#__PURE__*/ _jsxRuntime.jsxs("tr", {
                 __source: {
                     fileName: "src/components/chatService/chatHandler.components.jsx",
-                    lineNumber: 65
+                    lineNumber: 60
                 },
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx("td", {
                         __source: {
                             fileName: "src/components/chatService/chatHandler.components.jsx",
-                            lineNumber: 66
+                            lineNumber: 61
                         },
                         __self: this,
                         children: index + 1
@@ -47755,7 +47756,7 @@ function ChatHandler() {
                     /*#__PURE__*/ _jsxRuntime.jsx("td", {
                         __source: {
                             fileName: "src/components/chatService/chatHandler.components.jsx",
-                            lineNumber: 67
+                            lineNumber: 62
                         },
                         __self: this,
                         children: current.gid
@@ -47763,7 +47764,7 @@ function ChatHandler() {
                     /*#__PURE__*/ _jsxRuntime.jsx("td", {
                         __source: {
                             fileName: "src/components/chatService/chatHandler.components.jsx",
-                            lineNumber: 68
+                            lineNumber: 63
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx("button", {
@@ -47771,7 +47772,7 @@ function ChatHandler() {
                             onClick: joinRoom.bind(this, current.gid),
                             __source: {
                                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                                lineNumber: 69
+                                lineNumber: 64
                             },
                             __self: this,
                             children: "Join"
@@ -47788,21 +47789,21 @@ function ChatHandler() {
         className: "App",
         __source: {
             fileName: "src/components/chatService/chatHandler.components.jsx",
-            lineNumber: 87
+            lineNumber: 82
         },
         __self: this,
         children: !showChat ? /*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "list",
             __source: {
                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                lineNumber: 89
+                lineNumber: 84
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 className: "list-sub-table",
                 __source: {
                     fileName: "src/components/chatService/chatHandler.components.jsx",
-                    lineNumber: 90
+                    lineNumber: 85
                 },
                 __self: this,
                 children: [
@@ -47810,13 +47811,13 @@ function ChatHandler() {
                         className: "head",
                         __source: {
                             fileName: "src/components/chatService/chatHandler.components.jsx",
-                            lineNumber: 91
+                            lineNumber: 86
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                             __source: {
                                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                                lineNumber: 92
+                                lineNumber: 87
                             },
                             __self: this,
                             children: "Chat Groups"
@@ -47825,7 +47826,7 @@ function ChatHandler() {
                     /*#__PURE__*/ _jsxRuntime.jsx("hr", {
                         __source: {
                             fileName: "src/components/chatService/chatHandler.components.jsx",
-                            lineNumber: 94
+                            lineNumber: 89
                         },
                         __self: this
                     }),
@@ -47833,27 +47834,27 @@ function ChatHandler() {
                         className: "table table-hover",
                         __source: {
                             fileName: "src/components/chatService/chatHandler.components.jsx",
-                            lineNumber: 95
+                            lineNumber: 90
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx("thead", {
                                 __source: {
                                     fileName: "src/components/chatService/chatHandler.components.jsx",
-                                    lineNumber: 96
+                                    lineNumber: 91
                                 },
                                 __self: this,
                                 children: /*#__PURE__*/ _jsxRuntime.jsxs("tr", {
                                     __source: {
                                         fileName: "src/components/chatService/chatHandler.components.jsx",
-                                        lineNumber: 97
+                                        lineNumber: 92
                                     },
                                     __self: this,
                                     children: [
                                         /*#__PURE__*/ _jsxRuntime.jsx("th", {
                                             __source: {
                                                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                                                lineNumber: 98
+                                                lineNumber: 93
                                             },
                                             __self: this,
                                             children: "#"
@@ -47861,7 +47862,7 @@ function ChatHandler() {
                                         /*#__PURE__*/ _jsxRuntime.jsx("th", {
                                             __source: {
                                                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                                                lineNumber: 99
+                                                lineNumber: 94
                                             },
                                             __self: this,
                                             children: "Name"
@@ -47869,7 +47870,7 @@ function ChatHandler() {
                                         /*#__PURE__*/ _jsxRuntime.jsx("th", {
                                             __source: {
                                                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                                                lineNumber: 100
+                                                lineNumber: 95
                                             },
                                             __self: this,
                                             children: "Action"
@@ -47877,13 +47878,61 @@ function ChatHandler() {
                                     ]
                                 })
                             }),
-                            /*#__PURE__*/ _jsxRuntime.jsx("tbody", {
+                            loggedIn !== "Student" ? /*#__PURE__*/ _jsxRuntime.jsx("tbody", {
                                 __source: {
                                     fileName: "src/components/chatService/chatHandler.components.jsx",
-                                    lineNumber: 103
+                                    lineNumber: 99
                                 },
                                 __self: this,
                                 children: groupList()
+                            }) : /*#__PURE__*/ _jsxRuntime.jsx("tbody", {
+                                __source: {
+                                    fileName: "src/components/chatService/chatHandler.components.jsx",
+                                    lineNumber: 101
+                                },
+                                __self: this,
+                                children: group && /*#__PURE__*/ _jsxRuntime.jsxs("tr", {
+                                    __source: {
+                                        fileName: "src/components/chatService/chatHandler.components.jsx",
+                                        lineNumber: 103
+                                    },
+                                    __self: this,
+                                    children: [
+                                        /*#__PURE__*/ _jsxRuntime.jsx("td", {
+                                            __source: {
+                                                fileName: "src/components/chatService/chatHandler.components.jsx",
+                                                lineNumber: 104
+                                            },
+                                            __self: this,
+                                            children: "1"
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsx("td", {
+                                            __source: {
+                                                fileName: "src/components/chatService/chatHandler.components.jsx",
+                                                lineNumber: 105
+                                            },
+                                            __self: this,
+                                            children: group.gid
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsx("td", {
+                                            __source: {
+                                                fileName: "src/components/chatService/chatHandler.components.jsx",
+                                                lineNumber: 106
+                                            },
+                                            __self: this,
+                                            children: /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                                                className: "btn btn-primary account-button-blue",
+                                                onClick: joinRoom.bind(this, group.gid),
+                                                __source: {
+                                                    fileName: "src/components/chatService/chatHandler.components.jsx",
+                                                    lineNumber: 107
+                                                },
+                                                __self: this,
+                                                children: "Join"
+                                            })
+                                        })
+                                    ]
+                                })
                             })
                         ]
                     })
@@ -47895,7 +47944,7 @@ function ChatHandler() {
             room: room,
             __source: {
                 fileName: "src/components/chatService/chatHandler.components.jsx",
-                lineNumber: 109
+                lineNumber: 123
             },
             __self: this
         })

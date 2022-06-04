@@ -6,7 +6,7 @@ import axios from "axios";
 import { Table } from "react-bootstrap";
 import AuthContext from "../userManagement/context/LoginContext";
 
-const socket = io.connect("https://sliit-research-management.herokuapp.com");
+const socket = io.connect("http://localhost:8000");
 
 function ChatHandler() {
   const { loggedIn } = useContext(AuthContext);
@@ -34,18 +34,13 @@ function ChatHandler() {
    */
   async function getData() {
     try {
-      const result = await axios.get(
-        "https://sliit-research-management.herokuapp.com/account/"
-      );
+      const result = await axios.get("http://localhost:8000/account/");
       if (loggedIn === "Student") {
-        const group = await axios.get(
-          "https://sliit-research-management.herokuapp.com/chat/find-group"
-        );
-        setGroup(group.data.allgroups);
+        const group = await axios.get("http://localhost:8000/chat/find-group");
+        console.log(group);
+        setGroup(group.data);
       } else {
-        const group = await axios.get(
-          "https://sliit-research-management.herokuapp.com/groups/"
-        );
+        const group = await axios.get("http://localhost:8000/groups/");
         setGroup(group.data.allgroups);
       }
       setUsername(result.data.name);
@@ -100,7 +95,26 @@ function ChatHandler() {
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>{groupList()}</tbody>
+              {loggedIn !== "Student" ? (
+                <tbody>{groupList()}</tbody>
+              ) : (
+                <tbody>
+                  {group && (
+                    <tr>
+                      <td>1</td>
+                      <td>{group.gid}</td>
+                      <td>
+                        <button
+                          className="btn btn-primary account-button-blue"
+                          onClick={joinRoom.bind(this, group.gid)}
+                        >
+                          Join
+                        </button>
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              )}
             </Table>
           </div>
         </div>

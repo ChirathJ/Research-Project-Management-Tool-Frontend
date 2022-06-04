@@ -44490,7 +44490,7 @@ function LogOut() {
     const navigate = _reactRouterDom.useNavigate();
     async function logOut() {
         try {
-            await _axiosDefault.default.get("http:///localhost:8000/auth/logout");
+            await _axiosDefault.default.get("https://sliit-research-management.herokuapp.com/auth/logout");
             navigate("/");
         } catch (err) {
             console.error(err);
@@ -44501,7 +44501,7 @@ function LogOut() {
         onClick: logOut,
         __source: {
             fileName: "src/components/userManagement/Authentication/Logout.jsx",
-            lineNumber: 18
+            lineNumber: 20
         },
         __self: this,
         children: "Log out"
